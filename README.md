@@ -1,4 +1,4 @@
-# MSD-Team3
+# MSD-Team DurangoPy
 This is a repository for Team 3 working on the emergency hospital bed tracking system.
 #Emergency Bed Tracking System
 
