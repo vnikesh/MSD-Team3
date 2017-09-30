@@ -1,3 +1,33 @@
 from django.contrib import admin
-
+from .models import Patient, Nurse, Hospital, Administrator, Bed
 # Register your models here.
+
+class PatientList(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'bed_type')
+    list_filter = ('first_name', 'last_name')
+    search_fields = ('firstname', 'last_name')
+    ordering = ['first_name', 'last_name']
+
+class HospitalList(admin.ModelAdmin):
+    list_display = ('hospital_name', 'address', 'phone_no')
+    list_filter = ('hospital_name', 'phone_no')
+    search_fields = ('hospital_name', 'address')
+    ordering = ['hospital_name']
+
+
+class NurseList(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name')
+    list_filter = ('first_name', 'last_name')
+    search_fields = ('nurse_id', 'first_name', 'last_name')
+    ordering = ['first_name', 'last_name']
+
+class BedList(admin.ModelAdmin):
+    list_display = ('bed_type','hospital_id')
+    list_filter = ('bed_type', 'hospital_id')
+    search_fields = ('hospital_id', 'bed_type')
+    ordering = ['hospital_id']
+
+admin.site.register(Patient, PatientList)
+admin.site.register(Nurse, NurseList)
+admin.site.register(Hospital, HospitalList)
+admin.site.register(Bed,BedList)
