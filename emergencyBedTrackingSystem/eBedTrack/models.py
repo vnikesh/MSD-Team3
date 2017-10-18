@@ -71,7 +71,7 @@ class Nurse(models.Model):
         return str(self.nurse_id)
 
 class Bed(models.Model):
-    #bed_id = models.IntegerField(blank=True, null=True, primary_key=True)
+    bed_id = models.IntegerField(blank=True, null=True, primary_key=True)
     bed_type = models.CharField(max_length=50, choices = [('AD ICU/CC', 'AD ICU/CC'),('ER', 'ER'),('MED/SURG', 'MED/SURG'),('OB', 'OB'),('SICU', 'SICU'),('Neg Pres/Iso', 'Neg Pres/Iso'),('OR', 'OR'),('Peds', 'Peds'),('PICU', 'PICU'),('NICU','NICU'),('Burn', 'Burn'),('Mental_Health','Mental_Health'),('Other', 'Other')])
     hospital_id = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
 
