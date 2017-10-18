@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django import forms
 
 # Create your models here.
 
@@ -17,6 +18,7 @@ class Patient(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=10)
     injuries = models.CharField(max_length=50,blank=True)
+    #deposition = forms.ChoiceField(choices=CONDITION_DEP(), widget=forms.RadioSelect())
     deposition = models.CharField(max_length=50, blank=True)
     time_of_surgery = models.CharField(max_length=20,blank=True)
     kin_name = models.CharField(max_length=50,blank=True)
@@ -28,6 +30,12 @@ class Patient(models.Model):
     bed_id = models.ForeignKey("Bed", on_delete=models.CASCADE, related_name='bedpatients', null=True)
 
 
+
+#Class CONDITION_DEP(models.Model):
+ #       CONDITION_DEP = (
+  #          ('Good','Good'),
+   #         ('Serious','Serious')
+    #    )
 
     def created(self):
         self.time_of_admission = timezone.now()
@@ -64,8 +72,11 @@ class Nurse(models.Model):
 
 class Bed(models.Model):
     #bed_id = models.IntegerField(blank=True, null=True, primary_key=True)
-    bed_type = models.CharField(max_length=50)
+    bed_type = models.CharField(max_length=50, choices = [('AD ICU/CC', 'AD ICU/CC'),('ER', 'ER'),('MED/SURG', 'MED/SURG'),('OB', 'OB'),('SICU', 'SICU'),('Neg Pres/Iso', 'Neg Pres/Iso'),('OR', 'OR'),('Peds', 'Peds'),('PICU', 'PICU'),('NICU','NICU'),('Burn', 'Burn'),('Mental_Health','Mental_Health'),('Other', 'Other')])
     hospital_id = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
+
+
+#Bed_Choices = ()
 
 
     def __str__(self):
