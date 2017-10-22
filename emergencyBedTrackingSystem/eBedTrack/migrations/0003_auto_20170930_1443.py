@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Administrator',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('admin_id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('admin_name', models.CharField(max_length=100)),
             ],
         ),
