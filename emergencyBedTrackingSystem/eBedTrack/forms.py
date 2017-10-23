@@ -12,7 +12,7 @@ class BedForm(forms.ModelForm):
     class Meta:
         model = Bed
         fields = (
-            'bed_type',)
+            'bed_id','bed_type',)
 
 
 class ContactForm(forms.Form):

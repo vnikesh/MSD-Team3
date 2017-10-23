@@ -8,7 +8,6 @@ from django.forms import forms
 from .forms import *
 
 
-
 def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
@@ -104,4 +103,23 @@ def nurse_list(request):
         form = NurseForm()
        # print("Else")
         return render(request, 'eBedTrack/nurse_list.html',
+                      {'form': form})
+
+
+@login_required
+def bedcount_update(request):
+    if request.method == "POST":
+        form = BedForm(request.POST)
+        if form.is_valid():
+            bed = form.save(commit=False)
+            bed.created_date = timezone.now()
+            bed.save()
+            beds = Bed.objects.filter(created_date__lte=timezone.now())
+            return render(request, 'eBedTrack/nurse_list.html',
+                {'beds': beds})
+
+    else:
+        form = BedForm()
+       # print("Else")
+        return render(request, 'eBedTrack/bedcount_update.html',
                       {'form': form})
