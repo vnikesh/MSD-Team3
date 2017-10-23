@@ -16,8 +16,10 @@ def home(request):
 
 def bed_availability(hospital_name):
     bed = get_object_or_404(Bed)
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(hospital_name, 'eBedTrack/bed_availability.html',
-                  {'beds': bed})
+                  {'beds': bed,
+                   'hospitals': hospitals})
 
 
 def eBedTrack_administrator(request):
@@ -38,17 +40,45 @@ def contact_us(request):
 
 def hospital_list(request):
 
-    hospital = get_object_or_404()
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/hospital_list.html',
-                  {'hospitals': hospital})
+                  {'hospitals': hospitals})
 
 
-
+@login_required()
 def patient_list(request):
+    if request.method == "POST":
+        form = PatientForm(request.POST)
+        if form.is_valid():
+                patient = form.save(commit=False)
+                patient.created_date = timezone.now()
+                patient.save()
+                patients = Patient.objects.filter(created_date__lte=timezone.now())
+                return render(request, 'eBedTrack/patient_list.html',
+                    {'patients': patients})
 
-    patient = get_object_or_404()
-    return render(request, 'eBedTrack/patient_list.html',
-                  {'patients': patient})
+    else:
+        form = PatientForm()
+        return render(request, 'eBedTrack/patient_list.html',
+                      {'form': form})
+
+@login_required()
+def personal(request):
+    if request.method == "POST":
+        form = PersonalForm(request.POST)
+        if form.is_valid():
+            personal = form.save(commit=False)
+            personal.created_date = timezone.now()
+            personal.save()
+            personals = Patient.objects.filter(created_date__lte=timezone.now())
+            return render(request, 'eBedTrack/patient_list.html',
+                          {'personals': personals})
+
+    else:
+        form = PersonalForm()
+        # print("Else")
+        return render(request, 'eBedTrack/patient_list.html',
+                      {'form': form})
 
 
 def press_report(request):
@@ -66,7 +96,7 @@ def nurse_list(request):
             nurse = form.save(commit=False)
             nurse.created_date = timezone.now()
             nurse.save()
-            nurses = Nurse.objects.filter()
+            nurses = Nurse.objects.filter(created_date__lte=timezone.now())
             return render(request, 'eBedTrack/nurse_list.html',
                 {'nurses': nurses})
 

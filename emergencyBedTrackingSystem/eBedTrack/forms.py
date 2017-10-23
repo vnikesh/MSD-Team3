@@ -27,14 +27,13 @@ class ContactForm(forms.Form):
 class NurseForm(forms.ModelForm):
     class Meta:
         model = Nurse
-        fields = ('nurse_id','first_name', 'last_name', 'address', 'phone_no',)
+        fields = ('nurse_id','first_name', 'last_name', 'address', 'phone_no', 'created_date',)
 
 
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type',)
-
 
 
 class PersonalForm(forms.ModelForm):

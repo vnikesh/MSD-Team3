@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'^hospital_list/$', views.hospital_list, name='hospital_list'),
     url(r'^nurse_list/$', views.nurse_list, name='nurse_list'),
     url(r'^patient_list/$', views.patient_list, name='patient_list'),
+    url(r'^personal/$', views.personal, name='personal'),
+    url(r'^patient_list/personal', views.personal, name='personal'),
     url(r'^eBedTrack/(?P<pk>\d+)/administrator/$', views.eBedTrack_administrator, name='eBedTrack_administrator'),
 
 

@@ -55,6 +55,7 @@ class Nurse(models.Model):
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
+    created_date = models.DateField(default=timezone.now, blank=True, null=True)
     hospital_id = models.ForeignKey('Hospital' ,on_delete=models.CASCADE, related_name='hosnurses')
     admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
 
@@ -65,6 +66,7 @@ class Nurse(models.Model):
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True,default=501)
     bed_type = models.CharField(max_length=50)
+    created_date = models.DateField(default=timezone.now)
     hospital_id = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
 
     def __str__(self):
