@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Patient(models.Model):
     patient_id = models.IntegerField(null=False, primary_key=True,default=6001)
     first_name = models.CharField(max_length=50, null=False)
@@ -27,8 +28,6 @@ class Patient(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
     nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
 
-
-
     def created(self):
         self.time_of_admission = timezone.now()
         self.save()
@@ -49,6 +48,7 @@ class Patient(models.Model):
         return Pateint(User, self).save(*args, **kwargs)
 '''
 
+
 class Nurse(models.Model):
     nurse_id = models.AutoField(null=False, default=5001, primary_key=True)
     first_name = models.CharField(max_length=100)
@@ -58,18 +58,18 @@ class Nurse(models.Model):
     hospital_id = models.ForeignKey('Hospital' ,on_delete=models.CASCADE, related_name='hosnurses')
     admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
 
-
     def __str__(self):
         return str(self.nurse_id)
+
 
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True,default=501)
     bed_type = models.CharField(max_length=50)
     hospital_id = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
 
-
     def __str__(self):
         return str(self.bed_id)
+
 
 class Hospital(models.Model):
     hospital_id = models.AutoField(primary_key=True,blank=False,default=1)

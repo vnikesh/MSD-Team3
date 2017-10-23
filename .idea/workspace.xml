@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec4a9b25-7e90-4dd9-9bf2-d0b92dbdaad1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/hospital_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/patient_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/press_report.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/db.sqlite3" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/migrations/0003_auto_20170930_1443.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/migrations/0003_auto_20170930_1443.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/home.html" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/settings.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/urls.py" afterPath="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,44 +23,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1543">
-              <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="183" lean-forward="false" selection-start-line="21" selection-start-column="183" selection-end-line="21" selection-end-column="183" />
+            <state relative-caret-position="168">
+              <caret line="8" column="63" lean-forward="true" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ehms.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/ehms.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3339">
-              <caret line="159" column="2" lean-forward="false" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
+            <state relative-caret-position="546">
+              <caret line="104" column="110" lean-forward="false" selection-start-line="104" selection-start-column="94" selection-end-line="104" selection-end-column="110" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="70" column="16" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
               <folding>
-                <marker date="1508646966356" expanded="false" signature="1077:1095" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="1162:1180" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="1248:1266" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="1687:1705" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="1750:1768" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="2563:2581" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="2942:2960" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="3009:3027" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="3995:4013" ph="..." />
-                <marker date="1508646966356" expanded="false" signature="4065:4083" ph="..." />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,8 +60,8 @@
       <file leaf-file-name="bed_availability.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="35" />
+            <state relative-caret-position="903">
+              <caret line="43" column="57" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -83,9 +70,65 @@
       <file leaf-file-name="contact_us.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-385">
+              <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hospital_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/hospital_list.html">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-136">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-231">
+              <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nurse_list.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="599">
+              <caret line="29" column="79" lean-forward="true" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,8 +138,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -123,21 +166,22 @@
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/urls.py" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/ehms/ehms.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/ehms/home.html" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/ehms.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/settings.py" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/hospital_list.html" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/patient_list.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/press_report.html" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py" />
-        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/migrations/0003_auto_20170930_1443.py" />
         <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/home.html" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/forms.py" />
+        <option value="$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py" />
       </list>
     </option>
   </component>
@@ -152,6 +196,25 @@
     <option name="y" value="57" />
     <option name="width" value="1018" />
     <option name="height" value="990" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -186,20 +249,6 @@
               <item name="ehms" type="462c0819:PsiDirectoryNode" />
               <item name="emergencyBedTrackingSystem" type="462c0819:PsiDirectoryNode" />
               <item name="eBedTrack" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehms" type="462c0819:PsiDirectoryNode" />
-              <item name="emergencyBedTrackingSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="eBedTrack" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehms" type="462c0819:PsiDirectoryNode" />
-              <item name="emergencyBedTrackingSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="eBedTrack" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ehms" type="b2602c69:ProjectViewProjectNode" />
@@ -273,14 +322,14 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -429,6 +478,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -436,16 +486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -465,16 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="104" column="0" lean-forward="true" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/emergencyBedTrackingSystem/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -482,14 +512,6 @@
           <folding>
             <element signature="e#660#701#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -509,81 +531,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/hospital_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/static/css/eBedTrack.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/ehms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3339">
-          <caret line="159" column="2" lean-forward="false" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
-          <folding>
-            <marker date="1508646966356" expanded="false" signature="1077:1095" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="1162:1180" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="1248:1266" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="1687:1705" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="1750:1768" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="2563:2581" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="2942:2960" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="3009:3027" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="3995:4013" ph="..." />
-            <marker date="1508646966356" expanded="false" signature="4065:4083" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1543">
-          <caret line="5" column="40" lean-forward="false" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -628,13 +579,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/ehms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3339">
+          <caret line="159" column="2" lean-forward="false" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
+          <folding>
+            <marker date="1508646966356" expanded="false" signature="1077:1095" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="1162:1180" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="1248:1266" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="1687:1705" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="1750:1768" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="2563:2581" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="2942:2960" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="3009:3027" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="3995:4013" ph="..." />
+            <marker date="1508646966356" expanded="false" signature="4065:4083" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
-          <caret line="21" column="183" lean-forward="false" selection-start-line="21" selection-start-column="183" selection-end-line="21" selection-end-column="183" />
+          <caret line="21" column="139" lean-forward="false" selection-start-line="21" selection-start-column="135" selection-end-line="21" selection-end-column="139" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="104" column="110" lean-forward="false" selection-start-line="104" selection-start-column="94" selection-end-line="104" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/contact_us.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-385">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/hospital_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/bed_availability.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="903">
+          <caret line="43" column="57" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="63" lean-forward="true" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-231">
+          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="29" column="79" lean-forward="true" selection-start-line="29" selection-start-column="79" selection-end-line="29" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="70" column="16" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emergencyBedTrackingSystem/eBedTrack/templates/eBedTrack/nurse_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
