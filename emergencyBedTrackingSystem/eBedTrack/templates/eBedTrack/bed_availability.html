@@ -15,7 +15,7 @@
             background-color: beige;
         }
     </style>
-    <div class="container">
+     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-primary">
@@ -39,10 +39,10 @@
             </tr>
             </thead>
             <tbody>
-            {% for hospital in hospitals %}
+            {% for k,v  in hospitals.items %}
                 <tr>
-                    <td>{{ hospital.hospital_name }}</td>
-                    <td> {{ 2 }} </td>
+                    <td>{{ k }}</td>
+                    <td>{{ v }} </td>
 
                 </tr>
             {% endfor %}

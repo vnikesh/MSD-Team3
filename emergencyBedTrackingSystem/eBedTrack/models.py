@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Patient(models.Model):
-    patient_id = models.IntegerField(null=False, primary_key=True,default=6001)
+    patient_id = models.IntegerField(null=False, primary_key=True)
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
     sex = models.CharField(max_length=10, null=False)
@@ -50,7 +50,7 @@ class Patient(models.Model):
 
 
 class Nurse(models.Model):
-    nurse_id = models.AutoField(null=False, default=5001, primary_key=True)
+    nurse_id = models.AutoField(null=False, primary_key=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
@@ -67,14 +67,26 @@ class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True,default=501)
     bed_type = models.CharField(max_length=50)
     created_date = models.DateField(default=timezone.now)
-    hospital_id = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
+    bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
+
+    def __str__(self):
+        self.save()
 
     def __str__(self):
         return str(self.bed_id)
 
 
 class Hospital(models.Model):
-    hospital_id = models.AutoField(primary_key=True,blank=False,default=1)
+    hospital_id = models.AutoField(primary_key=True)
+    hospital_name = models.CharField(max_length=100)
+    address = models.CharField(max_length=250)
+    phone_no = models.CharField(max_length=12)
+    created_date = models.DateField(default=timezone.now)
+    #admin_id = models.ForeignKey('Administrator',on_delete=models.CASCADE, related_name='hadmin')
+
+    def __str__(self):
+        self.save()
+    hospital_id = models.AutoField(primary_key=True,blank=False,)
     hospital_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
@@ -85,11 +97,13 @@ class Hospital(models.Model):
 
 
 class Administrator(models.Model):
+    admin_id = models.AutoField(primary_key=True)
     admin_id = models.AutoField(primary_key=True,default=101)
     admin_name = models.CharField(max_length= 100)
 
 
     def __str__(self):
+        self.save()
         return str(self.admin_id)
 
 
@@ -97,10 +111,6 @@ class Administrator(models.Model):
 class Nurse_Bed(models.Model):
     nurse = models.ForeignKey('Nurse', on_delete=models.CASCADE, related_name='nurbeds')
     bed = models.ForeignKey('Bed_info', on_delete=models.CASCADE, related_name='bednurbeds')
-
     def __str__(self):
         return str(self.nurse)
 '''
-
-
-

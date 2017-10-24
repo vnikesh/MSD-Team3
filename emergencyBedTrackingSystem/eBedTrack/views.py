@@ -13,12 +13,38 @@ def home(request):
                   {'eBedTrack': home})
 
 
-def bed_availability(hospital_name):
-    bed = get_object_or_404(Bed)
+def bed_availability(request):
+    print('inside hospital_list')
+    h = Hospital.objects.all()
+    dict = {}
+    for x in h:
+        e = Bed.objects.filter(bh_id=x).count()
+        hos = Hospital.objects.get(hospital_id=str(x))
+        dict[hos.hospital_name] = e
+
+    print(dict)
+
+    return render(request, 'eBedTrack/bed_availability.html',
+                  {'hospitals': dict})
+
     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
-    return render(hospital_name, 'eBedTrack/bed_availability.html',
-                  {'beds': bed,
-                   'hospitals': hospitals})
+    return render(request, 'eBedTrack/bed_availability.html',
+                  {'hospitals': hospitals})
+
+
+
+
+#def bed_availability(request):
+#    hospitals = Hospital.objects.all()
+#    beds = Bed.objects.all()
+#    return render(request, 'eBedTrack/bed_availability.html',
+#                    {'hospitals': hospitals, 'beds': beds})
+
+
+def bed_count(request):
+    beds = Bed.objects.all()
+    return render(request, 'eBedTrack/bed_availability.html',
+                  {'beds': beds})
 
 
 def eBedTrack_administrator(request):
@@ -60,6 +86,10 @@ def patient_list(request):
         form = PatientForm()
         return render(request, 'eBedTrack/patient_list.html',
                       {'form': form})
+
+
+sex = [('male', 'female', 'others')]
+
 
 @login_required()
 def personal(request):
@@ -115,7 +145,7 @@ def bedcount_update(request):
             bed.created_date = timezone.now()
             bed.save()
             beds = Bed.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/nurse_list.html',
+            return render(request, 'eBedTrack/bedcount_update.html',
                 {'beds': beds})
 
     else:
