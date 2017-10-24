@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.forms import forms
 from .forms import *
+from django.contrib.auth import authenticate, login
+from .forms import LoginForm
 
 
 def home(request):
@@ -153,3 +155,40 @@ def bedcount_update(request):
        # print("Else")
         return render(request, 'eBedTrack/bedcount_update.html',
                       {'form': form})
+
+
+def nurse_login(request):
+    return render(request, 'eBedTrack/nurse_login.html',
+                  {'nurse': nurse_login})
+
+
+def admin_login(request):
+    return render(request, 'eBedTrack/user_login.html',
+                  {'admin_login': admin_login})
+
+
+def success(request):
+    return render(request, 'eBedTrack/success.html',
+                  {'success': success})
+
+
+def user_login(request):
+    print('inside admin_login')
+    print('request method'+request.method)
+    if request.method == 'POST':
+        print('request method'+request.method)
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            print('form is valid')
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'],password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    return HttpResponse('Authenticated Successfully')
+                else:
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
+        else:
+            form = LoginForm()
+        return render(request, 'account/login.html', {'form': form})

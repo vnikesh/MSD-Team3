@@ -16,6 +16,15 @@ urlpatterns = [
     url(r'^patient_list/personal', views.personal, name='personal'),
     url(r'^bedcount_update/$', views.bedcount_update, name='bedcount_update'),
     url(r'^eBedTrack/(?P<pk>\d+)/administrator/$', views.eBedTrack_administrator, name='eBedTrack_administrator'),
+    url(r'^accounts/profile/nurse_login$', views.nurse_login, name='nurse_login'),
+    url(r'^accounts/profile/admin_login$', views.admin_login, name='admin_login'),
+   # url(r'^admin_login$', views.admin_login, name='admin_login'),
+    url(r'^nurse_login$', views.nurse_login, name='nurse_login'),
+    #url(r'^login/$', views.user_login, name='login'),
+    #url(r'^login/success$', views.success, name='success'),
+    url(r'^accounts/login/hospital_list', views.hospital_list, name='hospital_list'),
+
+
 
 
  ]

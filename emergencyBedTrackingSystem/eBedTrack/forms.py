@@ -41,3 +41,7 @@ class PersonalForm(forms.ModelForm):
         model = Patient
         fields = ('age', 'birth_date', 'phone', 'injuries', 'deposition', 'time_of_surgery',
                   'kin_name', 'relation', 'time_of_death', 'phone',)
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
