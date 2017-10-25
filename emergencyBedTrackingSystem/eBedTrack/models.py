@@ -86,18 +86,12 @@ class Hospital(models.Model):
 
     def __str__(self):
         self.save()
-    hospital_id = models.AutoField(primary_key=True,blank=False,)
-    hospital_name = models.CharField(max_length=100)
-    address = models.CharField(max_length=250)
-    phone_no = models.CharField(max_length=12)
-    #admin_id = models.ForeignKey('Administrator',on_delete=models.CASCADE, related_name='hadmin')
 
     def __str__(self):
         return str(self.hospital_id)
 
 
 class Administrator(models.Model):
-    admin_id = models.AutoField(primary_key=True)
     admin_id = models.AutoField(primary_key=True,default=101)
     admin_name = models.CharField(max_length= 100)
 
