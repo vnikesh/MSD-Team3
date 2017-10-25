@@ -35,14 +35,14 @@
             <thead>
             <tr class="bg-info">
                 <th>Hospital Name</th>
-                <th>Number of Beds available</th>
+                <th style="text-align: center">Number of Beds available</th>
             </tr>
             </thead>
             <tbody>
             {% for k,v  in hospitals.items %}
                 <tr>
                     <td>{{ k }}</td>
-                    <td>{{ v }} </td>
+                    <td style="text-align: center">{{ v }} </td>
 
                 </tr>
             {% endfor %}

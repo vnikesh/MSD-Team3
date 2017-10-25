@@ -28,17 +28,18 @@
 
 
                                             <h1>Contact</h1>
-                                            <form role="form" action="" method="post">
+                                            <form role="form" action="thanks.html" method="post">
                                                 {% csrf_token %}
                                                 <table>
                                                     <tr>
-                                                     First name: <input type="text" name="FirstName" value=""><br>
-                                                     Last name:  <input type="text" name="LastName" value=""><br>
+                                                     First name: <input type="text" name="FirstName" value="" required><br>
+                                                     Last name:  <input type="text" name="LastName" value="" required><br>
+                                                     Email Id :&nbsp;&nbsp;&nbsp;  <input type="text" name="LastName" value="" required><br>
                                                      Question:   <br>
-                                                        <textarea rows="4" cols="50"> </textarea>
+                                                        <textarea rows="4" cols="50" required> </textarea>
                                                     </tr>
                                                 </table>
-                                                <button type="submit">Submit</button>
+                                                <button type="submit" value="submit">Submit</button>
                                             </form>
                                     <br>
                                     <br>

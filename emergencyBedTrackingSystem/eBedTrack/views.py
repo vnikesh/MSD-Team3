@@ -172,6 +172,30 @@ def success(request):
                   {'success': success})
 
 
+def thanks(request):
+    return render(request, 'eBedTrack/thanks.html',
+                  {'thank': thanks})
+
+
+def press_report(request):
+    print('inside hospital_list')
+    h = Hospital.objects.all()
+    dict = {}
+    for x in h:
+        e = Bed.objects.filter(bh_id=x).count()
+        hos = Hospital.objects.get(hospital_id=str(x))
+        dict[hos.hospital_name] = e
+
+    print(dict)
+
+    return render(request, 'eBedTrack/press_report.html',
+                  {'hospitals': dict})
+
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'eBedTrack/press_report.html',
+                  {'hospitals': hospitals})
+
+
 def user_login(request):
     print('inside admin_login')
     print('request method'+request.method)

@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^nurse_login$', views.nurse_login, name='nurse_login'),
     #url(r'^login/$', views.user_login, name='login'),
     #url(r'^login/success$', views.success, name='success'),
+    url(r'^contact_us/thanks', views.thanks, name='thanks'),
     url(r'^accounts/login/hospital_list', views.hospital_list, name='hospital_list'),
 
 
