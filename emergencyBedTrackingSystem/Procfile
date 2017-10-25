@@ -1,1 +1,1 @@
-web: gunicorn emergencyBedTrackingSystem.wsgi --log-file -
+web: gunicorn eBedTrack.wsgi --log-file -
