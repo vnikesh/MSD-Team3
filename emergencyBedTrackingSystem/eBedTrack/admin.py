@@ -25,10 +25,9 @@ class NurseList(admin.ModelAdmin):
 
 
 class BedList(admin.ModelAdmin):
-    list_display = ('bed_id', 'bed_type')
-    list_filter = ('bed_id', 'bed_type','bh')
-    list_filter = ('bed_id', 'bed_type')
-    search_fields = ('bed_id', 'bed_type')
+    list_display = ('bed_id', 'bed_type', 'bed_count')
+    list_filter = ('bed_id', 'bed_type','bed_count','bh')
+    search_fields = ('bed_id', 'bed_type','bed_count')
     ordering = ['bed_id']
 
 
