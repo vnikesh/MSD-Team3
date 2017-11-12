@@ -9,11 +9,28 @@ class Patient(models.Model):
     patient_id = models.IntegerField(null=False, primary_key=True)
     first_name = models.CharField(max_length=50, null=False)
     last_name = models.CharField(max_length=50, null=False)
-    sex = models.CharField(max_length=10, null=False)
+    #sex = models.CharField(max_length=10, null=False)
+    MALE = 'M'
+    FEMALE = 'F'
+    type_of_sex = (
+        (MALE, 'MALE'),
+        (FEMALE, 'FEMALE'),
+    )
+    sex = models.CharField(max_length=10,
+                                      choices=type_of_sex,
+                                      default=MALE)
     time_of_admission = models.DateTimeField(default=timezone.now)
     condition = models.CharField(max_length=30)
-    bed_type = models.CharField(max_length=10)
-    bed_id = models.CharField(max_length=20)
+    ICU = '1'
+    EU = '2'
+    OTHER = '3'
+    type_of_bed= (
+        (ICU,'ICU'),
+        (EU,'EU'),
+        (OTHER,'OTHER'),
+    )
+    bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
+    bed_id = models.CharField(max_length=20,default=0)
     mode_of_arrival = models.CharField(max_length=50)
     age = models.CharField(max_length=10)
     birth_date = models.DateField(null=True, blank=True)
@@ -28,6 +45,7 @@ class Patient(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
     nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
 
+
     def created(self):
         self.time_of_admission = timezone.now()
         self.save()
@@ -38,15 +56,6 @@ class Patient(models.Model):
 
     def __str__(self):
         return str(self.patient_id)
-
-'''
-    def save(self, *args, **kwargs):
-        # On save, update timestamps
-        if not self.id:
-            self.created_date = timezone.now()
-        self.update_date = timezone.now()
-        return Pateint(User, self).save(*args, **kwargs)
-'''
 
 
 class Nurse(models.Model):
@@ -66,14 +75,15 @@ class Nurse(models.Model):
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
     bed_type = models.CharField(max_length=50)
+    bed_count = models.CharField(max_length=25)
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
 
     def __str__(self):
         self.save()
-
-    def __str__(self):
         return str(self.bed_id)
+
+
 
 
 class Hospital(models.Model):
@@ -86,10 +96,7 @@ class Hospital(models.Model):
 
     def __str__(self):
         self.save()
-
-    def __str__(self):
-       return str(self.hospital_id)
-
+        return str(self.hospital_id)
 
 class Administrator(models.Model):
     admin_id = models.AutoField(null=False, primary_key=True)
@@ -99,11 +106,3 @@ class Administrator(models.Model):
         self.save()
         return str(self.admin_id)
 
-
-'''
-class Nurse_Bed(models.Model):
-    nurse = models.ForeignKey('Nurse', on_delete=models.CASCADE, related_name='nurbeds')
-    bed = models.ForeignKey('Bed_info', on_delete=models.CASCADE, related_name='bednurbeds')
-    def __str__(self):
-        return str(self.nurse)
-'''
