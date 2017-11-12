@@ -29,11 +29,6 @@ def bed_availability(request):
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict})
 
-    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
-    return render(request, 'eBedTrack/bed_availability.html',
-                  {'hospitals': hospitals})
-
-
 
 
 #def bed_availability(request):

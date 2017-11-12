@@ -13,7 +13,7 @@ class Patient(models.Model):
     time_of_admission = models.DateTimeField(default=timezone.now)
     condition = models.CharField(max_length=30)
     bed_type = models.CharField(max_length=10)
-    bed_id = models.CharField(max_length=20,default=0)
+    bed_id = models.CharField(max_length=20)
     mode_of_arrival = models.CharField(max_length=50)
     age = models.CharField(max_length=10)
     birth_date = models.DateField(null=True, blank=True)
@@ -56,7 +56,7 @@ class Nurse(models.Model):
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
     created_date = models.DateField(default=timezone.now, blank=True, null=True)
-    hospital_id = models.ForeignKey('Hospital' ,on_delete=models.CASCADE, related_name='hosnurses')
+    hospital_id = models.ForeignKey('Hospital',on_delete=models.CASCADE, related_name='hosnurses')
     admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Nurse(models.Model):
 
 
 class Bed(models.Model):
-    bed_id = models.IntegerField(blank=False, null=False, primary_key=True,default=501)
+    bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
     bed_type = models.CharField(max_length=50)
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
@@ -77,7 +77,7 @@ class Bed(models.Model):
 
 
 class Hospital(models.Model):
-    hospital_id = models.AutoField(primary_key=True)
+    hospital_id = models.IntegerField(null=False, primary_key=True)
     hospital_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
@@ -88,13 +88,12 @@ class Hospital(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.hospital_id)
+       return str(self.hospital_id)
 
 
 class Administrator(models.Model):
-    admin_id = models.AutoField(primary_key=True,default=101)
+    admin_id = models.AutoField(null=False, primary_key=True)
     admin_name = models.CharField(max_length= 100)
-
 
     def __str__(self):
         self.save()
