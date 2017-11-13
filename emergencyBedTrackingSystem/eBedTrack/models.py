@@ -129,3 +129,17 @@ class Administrator(models.Model):
         self.save()
         return str(self.admin_id)
 
+class ContactUs(models.Model):
+    contactId = models.AutoField(null=False, primary_key=True)
+    firstName = models.CharField(max_length= 100)
+    lastName = models.CharField(max_length=100)
+    emailId = models.CharField(max_length=50)
+    question = models.TextField()
+    created_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        self.save()
+        self.created_date = timezone.now()
+        return str(self.contactId)
+
+

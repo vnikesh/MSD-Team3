@@ -51,13 +51,29 @@ def eBedTrack_administrator(request):
     return HttpResponse(status=201)
 
 
+# def contact_us(request):
+#
+#     form_class = forms
+#
+#     return render(request, 'eBedTrack/contact_us.html', {
+#         'form': form_class,
+#     })
+
+
 def contact_us(request):
+   if request.method == "POST":
+       form = ContactForm(request.POST)
+       if form.is_valid():
+           contact = form.save(commit=False)
+           contact.save()
+           contacts = ContactUs.objects.filter(created_date=timezone.now())
+           return render(request, 'eBedTrack/contact_us.html',
+                         {'stocks': contacts})
+   else:
+       form = ContactForm()
+       # print("Else")
+   return render(request, 'eBedTrack/contact_us.html', {'form': form})
 
-    form_class = forms
-
-    return render(request, 'eBedTrack/contact_us.html', {
-        'form': form_class,
-    })
 
 
 def hospital_list(request):
