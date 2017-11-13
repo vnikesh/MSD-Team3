@@ -5,13 +5,13 @@ from .models import Patient, Nurse, Hospital, Administrator, Bed
 
 class PatientList(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'bed_type')
-    list_filter = ('first_name', 'last_name')
+    list_filter = ('ph','first_name', 'last_name')
     search_fields = ('first_name', 'last_name')
     ordering = ['first_name', 'last_name']
 
 
 class HospitalList(admin.ModelAdmin):
-    list_display = ('hospital_name', 'address', 'phone_no')
+    list_display = ('hospital_id','hospital_name', 'address', 'phone_no')
     list_filter = ('hospital_name', 'phone_no')
     search_fields = ('hospital_name', 'address')
     ordering = ['hospital_name']

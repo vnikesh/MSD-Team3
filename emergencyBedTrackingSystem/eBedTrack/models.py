@@ -34,7 +34,6 @@ class Patient(models.Model):
     Burn = 'Burn'
     Mental_Health = 'Mental-Health'
     Other = 'Other'
-
     type_of_bed= (
         (ICU_CC,'ICU/CC'),
         (EU,'EU'),
@@ -49,7 +48,6 @@ class Patient(models.Model):
         (Burn, 'Burn'),
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
-
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
     bed_id = models.CharField(max_length=20,default=0)
@@ -98,15 +96,7 @@ class Nurse(models.Model):
 
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
-	ICU = 'ICU'
-    EU = 'EU'
-    OTHER = 'OTHER'
-    type_of_bed= (
-        (ICU,'ICU'),
-        (EU,'EU'),
-        (OTHER,'OTHER'),
-    )
-    bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
+    bed_type = models.CharField(max_length=10, choices=Patient.type_of_bed,default='ICU')
     bed_count = models.CharField(max_length=25)
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
