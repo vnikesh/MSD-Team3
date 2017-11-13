@@ -21,19 +21,19 @@ class Patient(models.Model):
                                       default=MALE)
     time_of_admission = models.DateTimeField(default=timezone.now)
     condition = models.CharField(max_length=30)
-    ICU_CC = 'ICU_CC'
-    EU = '2'
-    MED_SURG = '3'
-    OB = '4'
-    SICU = '5'
-    Neg_Pres_Iso = '6'
-    OR = '7'
-    Peds = '8'
-    PICU = '9'
-    NICU = '10'
-    Burn = '11'
-    Mental_Health = '12'
-    Other = '13'
+    ICU_CC = 'ICU/CC'
+    EU = 'EU'
+    MED_SURG = 'MED/SURG'
+    OB = 'OB'
+    SICU = 'SICU'
+    Neg_Pres_Iso = 'Neg-Pres/Iso'
+    OR = 'OR'
+    Peds = 'Peds'
+    PICU = 'PICU'
+    NICU = 'NICU'
+    Burn = 'Burn'
+    Mental_Health = 'Mental-Health'
+    Other = 'Other'
 
     type_of_bed= (
         (ICU_CC,'ICU/CC'),
