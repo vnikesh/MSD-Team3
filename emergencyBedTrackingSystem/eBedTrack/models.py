@@ -21,20 +21,19 @@ class Patient(models.Model):
                                       default=MALE)
     time_of_admission = models.DateTimeField(default=timezone.now)
     condition = models.CharField(max_length=30)
-    ICU_CC = '1'
-    EU = '2'
-    MED_SURG = '3'
-    OB = '4'
-    SICU = '5'
-    Neg_Pres_Iso = '6'
-    OR = '7'
-    Peds = '8'
-    PICU = '9'
-    NICU = '10'
-    Burn = '11'
-    Mental_Health = '12'
-    Other = '13'
-
+    ICU_CC = 'ICU/CC'
+    EU = 'EU'
+    MED_SURG = 'MED/SURG'
+    OB = 'OB'
+    SICU = 'SICU'
+    Neg_Pres_Iso = 'Neg-Pres/Iso'
+    OR = 'OR'
+    Peds = 'Peds'
+    PICU = 'PICU'
+    NICU = 'NICU'
+    Burn = 'Burn'
+    Mental_Health = 'Mental-Health'
+    Other = 'Other'
     type_of_bed= (
         (ICU_CC,'ICU/CC'),
         (EU,'EU'),
@@ -49,7 +48,6 @@ class Patient(models.Model):
         (Burn, 'Burn'),
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
-
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
     bed_id = models.CharField(max_length=20,default=0)
@@ -67,6 +65,7 @@ class Patient(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
     nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
     hospital_id = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosppatients', null=True)
+    ph = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosp', null=True)
 
 
     def created(self):
@@ -97,7 +96,7 @@ class Nurse(models.Model):
 
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
-    bed_type = models.CharField(max_length=50)
+    bed_type = models.CharField(max_length=10, choices=Patient.type_of_bed,default='ICU')
     bed_count = models.CharField(max_length=25)
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
@@ -105,7 +104,6 @@ class Bed(models.Model):
     def __str__(self):
         self.save()
         return str(self.bed_id)
-
 
 
 
