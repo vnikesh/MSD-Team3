@@ -21,7 +21,7 @@ class Patient(models.Model):
                                       default=MALE)
     time_of_admission = models.DateTimeField(default=timezone.now)
     condition = models.CharField(max_length=30)
-    ICU_CC = '1'
+    ICU_CC = 'ICU_CC'
     EU = '2'
     MED_SURG = '3'
     OB = '4'
