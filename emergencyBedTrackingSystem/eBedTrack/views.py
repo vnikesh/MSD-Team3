@@ -23,19 +23,9 @@ def bed_availability(request):
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
         dict[hos.hospital_name] = e
-
-    print(dict)
-
+        print(dict)
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict})
-
-
-
-#def bed_availability(request):
-#    hospitals = Hospital.objects.all()
-#    beds = Bed.objects.all()
-#    return render(request, 'eBedTrack/bed_availability.html',
-#                    {'hospitals': hospitals, 'beds': beds})
 
 
 def bed_count(request):
