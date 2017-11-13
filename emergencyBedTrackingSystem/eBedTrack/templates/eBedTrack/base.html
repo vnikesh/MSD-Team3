@@ -1,7 +1,6 @@
 {% load staticfiles %}
+<html>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <title>Emergency Bed Tracking System</title>
     <meta charset="utf-8">
@@ -56,9 +55,14 @@
 
         /* Set black background color, white text and some padding */
         footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
+          background-color: black;
+          color: white;
+          padding: 8px;
+          border: 1px;
+          height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+          position: fixed;
+          bottom:0px;
+          width:100%;
         }
 
         body {
@@ -130,18 +134,7 @@
         }
 
         /* Set black background color, white text and some padding */
-        #footer {
-            background-color: black;
-            color: white;
-            padding: 15px;
-        }
 
-        #footer-copyright{
-              background-color: #f3e5f5;
-              border: 1px solid #ab47bc;
-              height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
-              padding: 8px;
-        }
 
         body {
             background-color: lemonchiffon !important;
@@ -228,8 +221,10 @@
         </div>
     </div>
 </div>
+
+</body>
 <footer>
-    <div id = "footer-copyright">
+    <div>
         @2017 DurangoPy Technology
         <a onclick="window.open('/pages/privacy_statement.html','PMMovie','width=750,height=600,toolbar=no,scrollbars=yes,resizable=no,status=no,menubar=no');return false;" href="#">Privacy Statement</a>
         |
@@ -237,5 +232,6 @@
 
     </div>
 </footer>
-</body>
+
+
 </html>
