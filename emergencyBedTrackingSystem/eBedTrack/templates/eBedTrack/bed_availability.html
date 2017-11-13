@@ -45,7 +45,34 @@
                     <td>{{ k }}</td>
                     <td style="text-align: center">{{ v }} </td>
                     <td id="det" style="text-align: center">
-                        <button class="btn btn-info" onclick ="myFunction()" >View details</button>
+                        <!--<button class="btn btn-info" onclick ="myFunction()" >View details</button>-->
+                        <table id="details" style="display: none; text-align: left; margin-left: 40px">
+                        <tr>
+                            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>
+                            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>
+                            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>
+                            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>
+                            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>
+                            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>
+                            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>
+                            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>Others: 10</td>
+                        </tr>
+                    </table>
+<button class="btn btn-info">View Details</button>
+
                     </td>
 
             {% endfor %}
@@ -85,37 +112,53 @@
 
 <script>
 //    if (button .onclick) {
-        function myFunction() {
-            document.getElementById("det").innerHTML = "<table style='text-align: left; margin-left: 40px'>\n" +
-                "        <tr>\n" +
-                "            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>\n" +
-                "        </tr>\n" +
-                "        <tr>\n" +
-                "            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>\n" +
-                "        </tr>\n" +
-                "        <tr>\n" +
-                "            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-                "        </tr>\n" +
-                "        <tr>\n" +
-                "            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" +
-                "            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>\n" +
-                "        </tr>\n" +
-                "        <tr>\n" +
-                "            <td>Others: 10</td>\n" +
-                "        </tr>\n" +
-                "         <tr>\n" +
-                "            <td>Others: 10</td>\n" +
-                "        </tr>\n" +
-                "    </table>";
+//        function myFunction() {
+//            document.getElementById("det").innerHTML = "<table style='text-align: left; margin-left: 40px'>\n" +
+//                "        <tr>\n" +
+//                "            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "        </tr>\n" +
+//                "        <tr>\n" +
+//                "            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "        </tr>\n" +
+//                "        <tr>\n" +
+//                "            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "        </tr>\n" +
+//                "        <tr>\n" +
+//                "            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>\n" +
+//                "        </tr>\n" +
+//                "        <tr>\n" +
+//                "            <td>Others: 10</td>\n" +
+//                "        </tr>\n"
+//                "    </table>";
+//
+//        }
 
-        }
+
+
+
+
+
+$("button").click(function (e) {
+    $("#details").show();
+    e.stopPropagation();
+});
+$(document).click(function() {
+    $("#details").hide();
+});
+//$(document).ready(function() {
+//    $('.details').hide();
+//    $('.det').click(function() {
+//       $(this).parents('det').find('details').toggle();
+//    });
+//});
 //else
 //    {
 //    function hide1(e) {
