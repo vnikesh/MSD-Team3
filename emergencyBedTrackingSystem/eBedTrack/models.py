@@ -51,7 +51,7 @@ class Patient(models.Model):
         (Other, 'Other'),
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
-    bed_id =  models.ForeignKey('Bed',on_delete=models.CASCADE, related_name='bedOfAdmission')
+    bed =  models.ForeignKey('Bed',on_delete=models.CASCADE, related_name='bedOfAdmission')
     mode_of_arrival = models.CharField(max_length=50)
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -64,7 +64,7 @@ class Patient(models.Model):
     time_of_death = models.CharField(max_length=20,blank=True)
     created_date = models.DateTimeField(default=timezone.now,blank=True)
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
-    nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
+    nurse_id= models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
     hospital_id = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosppatients', null=True)
 
     def created(self):
