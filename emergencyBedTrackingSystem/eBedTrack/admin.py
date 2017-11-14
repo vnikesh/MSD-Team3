@@ -5,7 +5,7 @@ from .models import Patient, Nurse, Hospital, Administrator, Bed, ContactUs
 
 class PatientList(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'bed_type')
-    list_filter = ('ph','first_name', 'last_name')
+    list_filter = ('hospital_id','first_name', 'last_name')
     search_fields = ('first_name', 'last_name')
     ordering = ['first_name', 'last_name']
 
