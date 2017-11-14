@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
     patient_id = models.IntegerField(null=False, primary_key=True)
-    first_name = models.CharField(max_length=50, null=False)
-    last_name = models.CharField(max_length=50, null=False)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     #sex = models.CharField(max_length=10, null=False)
     MALE = 'M'
     FEMALE = 'F'
@@ -52,9 +52,9 @@ class Patient(models.Model):
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
     bed_id = models.CharField(max_length=20,default=0)
     mode_of_arrival = models.CharField(max_length=50)
-    age = models.CharField(max_length=10)
+    age = models.CharField(max_length=10,null=True)
     birth_date = models.DateField(null=True, blank=True)
-    phone = models.CharField(max_length=10)
+    phone = models.CharField(max_length=10,null=True)
     injuries = models.CharField(max_length=50,blank=True)
     deposition = models.CharField(max_length=50, blank=True)
     time_of_surgery = models.CharField(max_length=20,blank=True)
@@ -65,7 +65,6 @@ class Patient(models.Model):
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
     nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
     hospital_id = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosppatients', null=True)
-    ph = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosp', null=True)
 
 
     def created(self):
@@ -108,12 +107,11 @@ class Bed(models.Model):
 
 
 class Hospital(models.Model):
-    hospital_id = models.IntegerField(null=False, primary_key=True)
+    hospital_id = models.CharField(primary_key=True,max_length=100)
     hospital_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
     created_date = models.DateField(default=timezone.now)
-    #admin_id = models.ForeignKey('Administrator',on_delete=models.CASCADE, related_name='hadmin')
 
     def __str__(self):
         self.save()
