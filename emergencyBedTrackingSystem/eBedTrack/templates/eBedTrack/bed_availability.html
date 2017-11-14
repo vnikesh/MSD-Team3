@@ -1,32 +1,8 @@
 {% extends 'eBedTrack/base.html' %}
 
 {% block content %}
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Emergency Bed Tracking System</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    </head>
-    <body>
-    <style>
-        body {
-            background-color: beige;
-        }
-    </style>
-     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Welcome!</div>
-                    <div class="panel-body">
-                        Check the availability of Beds in various Hospitals here
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="row">
         <h2 style="padding-left: 15Px">Hospital Beds Information</h2>
     </div>
@@ -81,70 +57,9 @@
             </tbody>
         </table>
     </div>
-    </body>
-<!--<style>-->
-<!--.alert {-->
-    <!--padding: 20px;-->
-    <!--background-color: #f44336;-->
-    <!--color: white;-->
-    <!--opacity: 1;-->
-    <!--transition: opacity 0.6s;-->
-    <!--margin-bottom: 15px;-->
-<!--}-->
 
-<!--.alert.info {background-color: #2196F3;}-->
-
-<!--.closebtn {-->
-    <!--margin-left: 15px;-->
-    <!--color: white;-->
-    <!--font-weight: bold;-->
-    <!--float: right;-->
-    <!--font-size: 22px;-->
-    <!--line-height: 20px;-->
-    <!--cursor: pointer;-->
-    <!--transition: 0.3s;-->
-<!--}-->
-
-<!--.closebtn:hover {-->
-    <!--color: black;-->
-<!--}-->
-<!--</style>-->
 
 <script>
-//    if (button .onclick) {
-//        function myFunction() {
-//            document.getElementById("det").innerHTML = "<table style='text-align: left; margin-left: 40px'>\n" +
-//                "        <tr>\n" +
-//                "            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "        </tr>\n" +
-//                "        <tr>\n" +
-//                "            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "        </tr>\n" +
-//                "        <tr>\n" +
-//                "            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "        </tr>\n" +
-//                "        <tr>\n" +
-//                "            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>\n" +
-//                "        </tr>\n" +
-//                "        <tr>\n" +
-//                "            <td>Others: 10</td>\n" +
-//                "        </tr>\n"
-//                "    </table>";
-//
-//        }
-
-
-
-
-
 
 $("button").click(function (e) {
     $("#details").show();
@@ -153,61 +68,9 @@ $("button").click(function (e) {
 $(document).click(function() {
     $("#details").hide();
 });
-//$(document).ready(function() {
-//    $('.details').hide();
-//    $('.det').click(function() {
-//       $(this).parents('det').find('details').toggle();
-//    });
-//});
-//else
-//    {
-//    function hide1(e) {
-//    document.getElementById("det").innerHTML.display='none';
-//    e.stopPropagation();}}
+
 </script>
 
-<!--<script>-->
-<!--function myFunction() {-->
-    <!--document.getElementById("det").innerHTML = "<div class=\"alert info\">\n" +-->
-        <!--"  <span class=\"closebtn\">&times;</span>\n" +-->
-        <!--"    <table style='text-align: left; margin-left: 40px'>\n" +-->
-        <!--"                        <tr>\n" +-->
-        <!--"                            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                        </tr>\n" +-->
-        <!--"                        <tr>\n" +-->
-        <!--"                            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                        </tr>\n" +-->
-        <!--"                        <tr>\n" +-->
-        <!--"                            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                        </tr>\n" +-->
-        <!--"                        <tr>\n" +-->
-        <!--"                            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>\n" +-->
-        <!--"                        </tr>\n" +-->
-        <!--"                        <tr>\n" +-->
-        <!--"                            <td>Others: 10</td>\n" +-->
-        <!--"                        </tr>\n" +-->
-        <!--"                    </table>\n" +-->
-        <!--"</div>"-->
-<!--}-->
-<!--var close = document.getElementsByClassName("closebtn");-->
-<!--var i;-->
 
-<!--for (i = 0; i < close.length; i++) {-->
-    <!--close[i].onclick = function(){-->
-        <!--var div = this.parentElement;-->
-        <!--div.style.opacity = "0";-->
-        <!--setTimeout(function(){ div.style.display = "none"; }, 600);-->
-    <!--}-->
-<!--}-->
-<!--</script>-->
 
-    </html>
 {% endblock %}
