@@ -176,10 +176,36 @@ def new_bed(request):
 
 
 def press_report(request):
-    # ...
+    h = Hospital.objects.all()
+    p = Patient.objects.all()
+    pdict = {}
+    dict = {}
+    for x in h:
+        e = Hospital.objects.get(hospital_name=x.hospital_name)
+        dict[e.hospital_name] = e
+        print("print e" , e)
+        print(x)
+        print(dict)
+        for y in p:
+            pc = Patient.objects.filter(hospital_id=x).count()
+            con = Patient.objects.get(patient_id=str(y))
+            pdict[con.condition] = pc
+            print(y)
 
-    # Return a "created" (201) response code.
-    return HttpResponse(status=201)
+    # print(dict)
+    # print(p)
+
+    # dict1 = {}
+    # for x in p:
+    #     e1 = Patient.objects.filter(patient_id=x)
+    #     hos1 = Patient.objects.get(patient_id=str(x))
+    #     dict[hos1.condition] = e1
+
+
+    return render(request, 'eBedTrack/press_report.html',
+                  {'press': pdict, 'hospitals':dict })
+
+
 
 @login_required
 def nurse_list(request):
@@ -244,20 +270,20 @@ def view_details(request):
                   {'view_details': view_details})
 
 
-def press_report(request):
-    print('inside hospital_list')
-    h = Hospital.objects.all()
-    dict = {}
-    for x in h:
-        e = Bed.objects.filter(bh_id=x).count()
-        hos = Hospital.objects.get(hospital_id=str(x))
-        dict[hos.hospital_name] = e
-
-    print(dict)
-
-    return render(request, 'eBedTrack/press_report.html',
-                  {'hospitals': dict})
-
-    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
-    return render(request, 'eBedTrack/press_report.html',
-                  {'hospitals': hospitals})
+# def press_report(request):
+#     print('inside hospital_list')
+#     h = Hospital.objects.all()
+#     dict = {}
+#     for x in h:
+#         e = Bed.objects.filter(bh_id=x).count()
+#         hos = Hospital.objects.get(hospital_id=str(x))
+#         dict[hos.hospital_name] = e
+#
+#     print(dict)
+#
+#     return render(request, 'eBedTrack/press_report.html',
+#                   {'hospitals': dict})
+#
+#     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+#     return render(request, 'eBedTrack/press_report.html',
+#                   {'hospitals': hospitals})
