@@ -14,9 +14,11 @@ def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
 
+
 def nurse_home(request):
     return render(request, 'eBedTrack/nurse_home.html',
                   {'eBedTrack': nurse_home})
+
 
 def nurse_bed_availability(request):
     print('inside hospital_list')
@@ -38,18 +40,17 @@ def nurse_bed_availability(request):
                   {'s': dict})
 
 
-
 def bed_availability(request):
     print('inside hospital_list')
     h = Hospital.objects.all()
-    dict = {}
+    dict1 = {}
     for x in h:
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
-        dict[hos.hospital_name] = e
-        print(dict)
+        dict1[hos.hospital_name] = e
+        print(dict1)
     return render(request, 'eBedTrack/bed_availability.html',
-                  {'hospitals': dict})
+                  {'hospitals': dict1})
 
 
 def bed_count(request):

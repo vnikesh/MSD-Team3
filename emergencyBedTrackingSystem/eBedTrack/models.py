@@ -67,7 +67,6 @@ class Patient(models.Model):
     hospital_id = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosppatients', null=True)
     ph = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosp', null=True)
 
-
     def created(self):
         self.time_of_admission = timezone.now()
         self.save()
@@ -106,7 +105,6 @@ class Bed(models.Model):
         return str(self.bed_id)
 
 
-
 class Hospital(models.Model):
     hospital_id = models.IntegerField(null=False, primary_key=True)
     hospital_name = models.CharField(max_length=100)
@@ -118,6 +116,7 @@ class Hospital(models.Model):
     def __str__(self):
         self.save()
         return str(self.hospital_id)
+
 
 class Administrator(models.Model):
     admin_id = models.AutoField(null=False, primary_key=True)
