@@ -7,8 +7,9 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
     patient_id = models.IntegerField(null=False, primary_key=True)
-    first_name = models.CharField(max_length=50, null=True)
-    last_name = models.CharField(max_length=50, null=True)
+    patient_tag = models.CharField(max_length=20, null=True, blank=False)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
     #sex = models.CharField(max_length=10, null=False)
     MALE = 'M'
     FEMALE = 'F'
@@ -18,8 +19,8 @@ class Patient(models.Model):
     )
     sex = models.CharField(max_length=10,
                                       choices=type_of_sex,
-                                      default=MALE)
-    time_of_admission = models.DateTimeField(default=timezone.now)
+                                      default=MALE, blank=False)
+    time_of_admission = models.DateTimeField(default=timezone.now, blank=False)
     condition = models.CharField(max_length=30)
     ICU_CC = 'ICU/CC'
     EU = 'EU'
@@ -52,9 +53,9 @@ class Patient(models.Model):
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
     bed_id = models.CharField(max_length=20,default=0)
     mode_of_arrival = models.CharField(max_length=50)
-    age = models.CharField(max_length=10,null=True)
+    age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    phone = models.CharField(max_length=10,null=True)
+    phone = models.CharField(max_length=10,null=True, blank=True)
     injuries = models.CharField(max_length=50,blank=True)
     deposition = models.CharField(max_length=50, blank=True)
     time_of_surgery = models.CharField(max_length=20,blank=True)
