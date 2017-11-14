@@ -2,12 +2,30 @@
 
 {% block content %}
 
+<head>
+    <meta charset="UTF-8">
+    <title>Emergency Bed Tracking System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+     <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Welcome!</div>
+                    <div class="panel-body">
+                        Check the availability of Beds in various Hospitals here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="row">
         <h2 style="padding-left: 15Px">Hospital Beds Information</h2>
     </div>
     <div>
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
             <tr class="bg-info">
                 <th>Hospital Name</th>
@@ -16,61 +34,59 @@
             </tr>
             </thead>
             <tbody>
-            {% for k,v  in  .items %}
+            {% for k,v  in  hospitals.items %}
                 <tr>
                     <td>{{ k }}</td>
                     <td style="text-align: center">{{ v }} </td>
-                    <td id="det" style="text-align: center">
-                        <!--<button class="btn btn-info" onclick ="myFunction()" >View details</button>-->
-                        <table id="details" style="display: none; text-align: left; margin-left: 40px">
-                        <tr>
-                            <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>
-                            <td>ER: 4&nbsp;&nbsp;&nbsp;</td>
-                            <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>OB: 3&nbsp;&nbsp;&nbsp;</td>
-                            <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>
-                            <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>OR: 7&nbsp;&nbsp;&nbsp;</td>
-                            <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>
-                            <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>
-                            <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                            <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>Others: 10</td>
-                        </tr>
-                    </table>
-<button class="btn btn-info">View Details</button>
-
-                    </td>
-
-            {% endfor %}
-
+                    <td><button class="btn btn-info" onclick="window.open('eBedTrack/view_details.html','PMMovie','width=750,height=600,toolbar=no,scrollbars=yes,resizable=no,status=no,menubar=no');return false;" href="#">View details</button></td>
+                    <!--<td id="det" style="text-align: center">-->
+                        <!--<table id="details" style="display: none; text-align: left; margin-left: 40px">-->
+                            <!--<tr>-->
+                                <!--<td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>ER: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>OB: 3&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>SICU: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>OR: 7&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Peds: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>PICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>NICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>Others: 10</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                        <!--<button class="btn btn-info">View Details</button>-->
+                    <!--</td>-->
                 </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>
 
 
-<script>
 
-$("button").click(function (e) {
-    $("#details").show();
-    e.stopPropagation();
-});
-$(document).click(function() {
-    $("#details").hide();
-});
+<!--//At the click of view details show additional bed types and availability for the hospital clicked-->
 
-</script>
+<!--<script>-->
 
+<!--$("button").click(function (e) {-->
+    <!--$("#details").show();-->
+    <!--e.stopPropagation();-->
+<!--});-->
+<!--$(document).click(function() {-->
+    <!--$("#details").hide();-->
+<!--});-->
 
+<!--</script>-->
 
 {% endblock %}

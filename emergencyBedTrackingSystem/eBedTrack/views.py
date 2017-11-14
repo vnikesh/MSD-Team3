@@ -10,13 +10,17 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from django.db.models import Count
 
+
 def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
+
+
 def nurse_home(request):
     print('inside nurse home')
     return render(request, 'eBedTrack/nurse_home.html',
                   {'eBedTrack': nurse_home})
+
 
 def nurse_bed_availability(request):
     print('inside hospital_list')
@@ -38,7 +42,6 @@ def nurse_bed_availability(request):
                   {'s': dict})
 
 
-
 def bed_availability(request):
     print('inside hospital_list')
     h = Hospital.objects.all()
@@ -47,19 +50,9 @@ def bed_availability(request):
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
         dict[hos.hospital_name] = e
-
-    print(dict)
-
+        print(dict)
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict})
-
-
-
-#def bed_availability(request):
-#    hospitals = Hospital.objects.all()
-#    beds = Bed.objects.all()
-#    return render(request, 'eBedTrack/bed_availability.html',
-#                    {'hospitals': hospitals, 'beds': beds})
 
 
 def bed_count(request):
@@ -244,6 +237,11 @@ def success(request):
 def thanks(request):
     return render(request, 'eBedTrack/thanks.html',
                   {'thank': thanks})
+
+
+def view_details(request):
+    return render(request, 'eBedTrack/view_details.html',
+                  {'view_details': view_details})
 
 
 def press_report(request):
