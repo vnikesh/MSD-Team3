@@ -30,7 +30,7 @@ class NurseForm(forms.ModelForm):
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type','hospital_id',)
+        fields = ('patient_tag', 'first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type','hospital_id',)
 
 
 class PersonalForm(forms.ModelForm):
