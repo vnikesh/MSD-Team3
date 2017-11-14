@@ -8,14 +8,18 @@ from django.forms import forms
 from .forms import *
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
-
+from django.db.models import Count
 
 def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ec8bb755f147451ee45ec270e29b20fab1cf51e4
 def nurse_home(request):
+    print('inside nurse home')
     return render(request, 'eBedTrack/nurse_home.html',
                   {'eBedTrack': nurse_home})
 
@@ -66,13 +70,29 @@ def eBedTrack_administrator(request):
     return HttpResponse(status=201)
 
 
+# def contact_us(request):
+#
+#     form_class = forms
+#
+#     return render(request, 'eBedTrack/contact_us.html', {
+#         'form': form_class,
+#     })
+
+
 def contact_us(request):
+   if request.method == "POST":
+       form = ContactForm(request.POST)
+       if form.is_valid():
+           contact = form.save(commit=False)
+           contact.save()
+           contacts = ContactUs.objects.filter(created_date=timezone.now())
+           return render(request, 'eBedTrack/contact_us.html',
+                         {'stocks': contacts})
+   else:
+       form = ContactForm()
+       # print("Else")
+   return render(request, 'eBedTrack/contact_us.html', {'form': form})
 
-    form_class = forms
-
-    return render(request, 'eBedTrack/contact_us.html', {
-        'form': form_class,
-    })
 
 
 def hospital_list(request):
@@ -83,9 +103,10 @@ def hospital_list(request):
 
 @login_required
 def patient_list(request):
+   print("inside patient list")
    print(request.user.username)
    print("inside patient list")
-   pat = Patient.objects.filter(ph=request.user.username)
+   pat = Patient.objects.filter(hospital_id=request.user.username)
    print(pat)
    return render(request, 'eBedTrack/patient_list.html', {'pat': pat})
 
@@ -97,7 +118,7 @@ def patient_new(request):
                 patient = form.save(commit=False)
                 patient.created_date = timezone.now()
                 patient.save()
-                pat = Patient.objects.filter(ph=request.user.username)
+                pat = Patient.objects.filter(hospital_id=request.user.username)
                 return render(request, 'eBedTrack/patient_list.html',
                     {'pat': pat})
     else:
@@ -114,7 +135,7 @@ def personal(request):
             personal = form.save(commit=False)
             personal.created_date = timezone.now()
             personal.save()
-            pat = Patient.objects.filter(ph=request.user.username)
+            pat = Patient.objects.filter(hospital_id=request.user.username)
             return render(request, 'eBedTrack/patient_list.html',
                           {'pat': pat})
 
@@ -132,7 +153,6 @@ def new_bed(request):
         if form.is_valid():
                 bed = form.save(commit=False)
                 bed.created_date = timezone.now()
-                bed.bh = 'UNMC'
                 bed.save()
 
                 e=request.user.username
@@ -155,75 +175,13 @@ def new_bed(request):
         return render(request, 'eBedTrack/new_bed.html',
                       {'form': form})
 
-"""
 
-@login_required()
-def patient_list(request):
-    if request.method == "POST":
-        form = PatientForm(request.POST)
-        if form.is_valid():
-                patient = form.save(commit=False)
-                patient.created_date = timezone.now()
-                patient.save()
-                patients = Patient.objects.filter(created_date__lte=timezone.now())
-                return render(request, 'eBedTrack/patient_list.html',
-                    {'patients': patients})
-
-    else:
-        form = PatientForm()
-        return render(request, 'eBedTrack/patient_list.html',
-                      {'form': form})
-
-
-sex = [('male', 'female', 'others')]
-
-
-@login_required()
-def personal(request):
-    if request.method == "POST":
-        form = PersonalForm(request.POST)
-        if form.is_valid():
-            personal = form.save(commit=False)
-            personal.created_date = timezone.now()
-            personal.save()
-            personals = Patient.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/patient_list.html',
-                          {'personals': personals})
-
-    else:
-        form = PersonalForm()
-        # print("Else")
-        return render(request, 'eBedTrack/patient_list.html',
-                      {'form': form})
-"""
 
 def press_report(request):
     # ...
 
     # Return a "created" (201) response code.
     return HttpResponse(status=201)
-"""
-
-@login_required
-def nurse_list(request):
-    if request.method == "POST":
-        form = NurseForm(request.POST)
-        if form.is_valid():
-            nurse = form.save(commit=False)
-            nurse.created_date = timezone.now()
-            nurse.save()
-            nurses = Nurse.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/nurse_list.html',
-                {'nurses': nurses})
-
-    else:
-        form = NurseForm()
-       # print("Else")
-        return render(request, 'eBedTrack/nurse_list.html',
-                      {'form': form})
-"""
-
-
 
 @login_required
 def nurse_list(request):
@@ -300,25 +258,3 @@ def press_report(request):
     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/press_report.html',
                   {'hospitals': hospitals})
-
-
-def user_login(request):
-    print('inside admin_login')
-    print('request method'+request.method)
-    if request.method == 'POST':
-        print('request method'+request.method)
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            print('form is valid')
-            cd = form.cleaned_data
-            user = authenticate(username=cd['username'],password=cd['password'])
-            if user is not None:
-                if user.is_active:
-                    return HttpResponse('Authenticated Successfully')
-                else:
-                    return HttpResponse('Disabled account')
-            else:
-                return HttpResponse('Invalid login')
-        else:
-            form = LoginForm()
-        return render(request, 'account/login.html', {'form': form})

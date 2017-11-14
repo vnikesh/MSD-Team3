@@ -1,5 +1,5 @@
 from django import forms
-from .models import Hospital, Bed, Patient, Nurse
+from .models import Hospital, Bed, Patient, Nurse, ContactUs
 
 
 class HospitalForm(forms.ModelForm):
@@ -15,13 +15,10 @@ class BedForm(forms.ModelForm):
             'bed_id','bed_type',)
 
 
-class ContactForm(forms.Form):
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required=True)
-    content = forms.CharField(
-        required=True,
-        widget=forms.Textarea
-    )
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactUs
+        fields = ('firstName', 'lastName', 'emailId', 'question',)
 
 
 class NurseForm(forms.ModelForm):
@@ -33,7 +30,7 @@ class NurseForm(forms.ModelForm):
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type','ph',)
+        fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type','hospital_id',)
 
 
 class PersonalForm(forms.ModelForm):
