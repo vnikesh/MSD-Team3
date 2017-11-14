@@ -45,14 +45,14 @@ def nurse_bed_availability(request):
 def bed_availability(request):
     print('inside hospital_list')
     h = Hospital.objects.all()
-    dict1 = {}
+    dict = {}
     for x in h:
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
-        dict1[hos.hospital_name] = e
-        print(dict1)
+        dict[hos.hospital_name] = e
+        print(dict)
     return render(request, 'eBedTrack/bed_availability.html',
-                  {'hospitals': dict1})
+                  {'hospitals': dict})
 
 
 def bed_count(request):
