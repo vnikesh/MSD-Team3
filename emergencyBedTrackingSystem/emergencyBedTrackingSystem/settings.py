@@ -81,16 +81,16 @@ WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'dd4umr02j4jtv1',
-        # 'USER': 'azxezfaxgiulis',
-        # 'PASSWORD': 'dfde5c2f7bd99d3f648ea1d5ba396a307334fe8ae1ea15191f1792b5e3eac2e3',
-        # 'HOST': 'ec2-107-22-244-62.compute-1.amazonaws.com',
-        # 'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dcbfd5oq5vujto',
+        'USER': 'ubbvlmgumjkrng',
+        'PASSWORD': 'ac7f0286b460680f4cf373f4aa0a62ad08e6ace6137096e1810a1c859bba09ae',
+        'HOST': 'ec2-184-73-247-240.compute-1.amazonaws.com',
+        'PORT': '5432',
 
 
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

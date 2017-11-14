@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
     patient_id = models.IntegerField(null=False, primary_key=True)
-    patient_tag = models.CharField(max_length=20, null=True, blank=False)
+    patient_tag = models.CharField(max_length=20, null=False, unique=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     #sex = models.CharField(max_length=10, null=False)
@@ -51,7 +51,7 @@ class Patient(models.Model):
         (Other, 'Other'),
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
-    bed_id = models.CharField(max_length=20,default=0)
+    bed_id =  models.ForeignKey('Bed',on_delete=models.CASCADE, related_name='bedOfAdmission')
     mode_of_arrival = models.CharField(max_length=50)
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
