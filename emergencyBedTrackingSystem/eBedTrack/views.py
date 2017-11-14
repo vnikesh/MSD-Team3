@@ -180,75 +180,13 @@ def new_bed(request):
         return render(request, 'eBedTrack/new_bed.html',
                       {'form': form})
 
-"""
 
-@login_required()
-def patient_list(request):
-    if request.method == "POST":
-        form = PatientForm(request.POST)
-        if form.is_valid():
-                patient = form.save(commit=False)
-                patient.created_date = timezone.now()
-                patient.save()
-                patients = Patient.objects.filter(created_date__lte=timezone.now())
-                return render(request, 'eBedTrack/patient_list.html',
-                    {'patients': patients})
-
-    else:
-        form = PatientForm()
-        return render(request, 'eBedTrack/patient_list.html',
-                      {'form': form})
-
-
-sex = [('male', 'female', 'others')]
-
-
-@login_required()
-def personal(request):
-    if request.method == "POST":
-        form = PersonalForm(request.POST)
-        if form.is_valid():
-            personal = form.save(commit=False)
-            personal.created_date = timezone.now()
-            personal.save()
-            personals = Patient.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/patient_list.html',
-                          {'personals': personals})
-
-    else:
-        form = PersonalForm()
-        # print("Else")
-        return render(request, 'eBedTrack/patient_list.html',
-                      {'form': form})
-"""
 
 def press_report(request):
     # ...
 
     # Return a "created" (201) response code.
     return HttpResponse(status=201)
-"""
-
-@login_required
-def nurse_list(request):
-    if request.method == "POST":
-        form = NurseForm(request.POST)
-        if form.is_valid():
-            nurse = form.save(commit=False)
-            nurse.created_date = timezone.now()
-            nurse.save()
-            nurses = Nurse.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/nurse_list.html',
-                {'nurses': nurses})
-
-    else:
-        form = NurseForm()
-       # print("Else")
-        return render(request, 'eBedTrack/nurse_list.html',
-                      {'form': form})
-"""
-
-
 
 @login_required
 def nurse_list(request):

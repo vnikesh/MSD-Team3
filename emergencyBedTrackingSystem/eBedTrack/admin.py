@@ -49,7 +49,6 @@ admin.site.register(Nurse, NurseList)
 admin.site.register(Hospital, HospitalList)
 admin.site.register(Administrator)
 admin.site.register(Bed, BedList)
-
 admin.site.register(ContactUs, ContactUsList)
 
 
