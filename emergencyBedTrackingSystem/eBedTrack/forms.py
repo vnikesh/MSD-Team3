@@ -30,7 +30,7 @@ class NurseForm(forms.ModelForm):
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type',)
+        fields = ('first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival', 'bed_type','ph',)
 
 
 class PersonalForm(forms.ModelForm):
@@ -42,3 +42,8 @@ class PersonalForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class BedForm(forms.ModelForm):
+    class Meta:
+        model=Bed
+        fields = ('bed_id','bed_type','created_date','bh')

@@ -34,7 +34,6 @@ class Patient(models.Model):
     Burn = 'Burn'
     Mental_Health = 'Mental-Health'
     Other = 'Other'
-
     type_of_bed= (
         (ICU_CC,'ICU/CC'),
         (EU,'EU'),
@@ -49,7 +48,6 @@ class Patient(models.Model):
         (Burn, 'Burn'),
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
-
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
     bed_id = models.CharField(max_length=20,default=0)
