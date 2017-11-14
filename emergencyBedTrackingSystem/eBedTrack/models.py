@@ -96,7 +96,6 @@ class Nurse(models.Model):
 class Bed(models.Model):
     bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
     bed_type = models.CharField(max_length=10, choices=Patient.type_of_bed,default='ICU')
-    bed_count = models.CharField(max_length=25)
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
 
