@@ -239,6 +239,11 @@ def thanks(request):
                   {'thank': thanks})
 
 
+def view_details(request):
+    return render(request, 'eBedTrack/view_details.html',
+                  {'view_details': view_details})
+
+
 def press_report(request):
     print('inside hospital_list')
     h = Hospital.objects.all()

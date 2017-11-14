@@ -38,34 +38,35 @@
                 <tr>
                     <td>{{ k }}</td>
                     <td style="text-align: center">{{ v }} </td>
-                    <td id="det" style="text-align: center">
-                        <table id="details" style="display: none; text-align: left; margin-left: 40px">
-                            <tr>
-                                <td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>
-                                <td>ER: 4&nbsp;&nbsp;&nbsp;</td>
-                                <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>OB: 3&nbsp;&nbsp;&nbsp;</td>
-                                <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>
-                                <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>OR: 7&nbsp;&nbsp;&nbsp;</td>
-                                <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>
-                                <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>NICU: 4&nbsp;&nbsp;&nbsp;</td>
-                                <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>Others: 10</td>
-                            </tr>
-                        </table>
-                        <button class="btn btn-info">View Details</button>
-                    </td>
+                    <td><button class="btn btn-info" onclick="window.open('eBedTrack/view_details.html','PMMovie','width=750,height=600,toolbar=no,scrollbars=yes,resizable=no,status=no,menubar=no');return false;" href="#">View details</button></td>
+                    <!--<td id="det" style="text-align: center">-->
+                        <!--<table id="details" style="display: none; text-align: left; margin-left: 40px">-->
+                            <!--<tr>-->
+                                <!--<td>AD ICU/CC: 3 &nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>ER: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>OB: 3&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>SICU: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>OR: 7&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Peds: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>PICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>NICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>Others: 10</td>-->
+                            <!--</tr>-->
+                        <!--</table>-->
+                        <!--<button class="btn btn-info">View Details</button>-->
+                    <!--</td>-->
                 </tr>
             {% endfor %}
             </tbody>
@@ -76,16 +77,16 @@
 
 <!--//At the click of view details show additional bed types and availability for the hospital clicked-->
 
-<script>
+<!--<script>-->
 
-$("button").click(function (e) {
-    $("#details").show();
-    e.stopPropagation();
-});
-$(document).click(function() {
-    $("#details").hide();
-});
+<!--$("button").click(function (e) {-->
+    <!--$("#details").show();-->
+    <!--e.stopPropagation();-->
+<!--});-->
+<!--$(document).click(function() {-->
+    <!--$("#details").hide();-->
+<!--});-->
 
-</script>
+<!--</script>-->
 
 {% endblock %}

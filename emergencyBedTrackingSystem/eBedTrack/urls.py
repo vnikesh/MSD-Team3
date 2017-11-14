@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^contact_us/thanks', views.thanks, name='thanks'),
     url(r'^accounts/login/hospital_list', views.hospital_list, name='hospital_list'),
     url(r'^accounts/profile/$', views.nurse_home, name='nurse_home'),
+    url(r'^bed_availability/eBedTrack/view_details', views.view_details, name='view_details'),
 
  ]
 
