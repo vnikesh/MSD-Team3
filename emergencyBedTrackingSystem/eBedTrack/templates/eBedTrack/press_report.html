@@ -33,21 +33,25 @@
             <tr class="bg-info">
 
                 <th style="width:60%;">Hospital Name</th>
+                <th style="width:40%; text-align: center">Condition</th>
                 <th style="width:40%; text-align: center">Patient Count</th>
 
             </tr>
             </thead>
             <tbody>
-            {% for k,v  in hospitals.items %}
-                <tr>
-                    <td>{{ k }}</td>
-                    <td style="text-align: center">{{ v }} </td>
-
-                </tr>
+            {% for k1,v1  in hospitals.items %}
+                {% for k,v  in press.items %}
+                    <tr>
+                        <td>{{ k1 }}</td>
+                        <td>{{ k }}</td>
+                        <td style="text-align: center">{{ v }} </td>
+                    </tr>
+                {% endfor %}
             {% endfor %}
             </tbody>
         </table>
     </div>
+
 
     <script>
         function myFunction() {
