@@ -36,8 +36,11 @@
         }
 
         body {
-            background-color:white !important;
+            background-image: url('/../../static/images/background.png');
+            opacity: 1;
+            background-repeat: repeat-x;
         }
+
 
         /* On small screens, set height to 'auto' for sidenav and grid */
         @media screen and (max-width: 767px) {
@@ -152,8 +155,8 @@
                 <li><a href="{% url 'eBedTrack:nurse_home' %}">Home</a></li>
                 <li><a href="{% url 'eBedTrack:patient_list' %}">Manage Patient</a></li>
                 <li><a href="{% url 'eBedTrack:nurse_bed_availability' %}">Manage Bed</a></li>
-                <li><a href="{% url 'eBedTrack:contact_us' %}">Contact US</a></li>
-                <li><a href="{% url 'eBedTrack:press_report' %}">Press Report</a></li>
+                <!--<li><a href="{% url 'eBedTrack:contact_us' %}">Contact US</a></li>-->
+                <!--<li><a href="{% url 'eBedTrack:press_report' %}">Press Report</a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
