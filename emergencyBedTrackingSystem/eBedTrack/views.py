@@ -10,14 +10,12 @@ from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from django.db.models import Count
 
+
 def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
-<<<<<<< HEAD
 
 
-=======
->>>>>>> ec8bb755f147451ee45ec270e29b20fab1cf51e4
 def nurse_home(request):
     print('inside nurse home')
     return render(request, 'eBedTrack/nurse_home.html',
