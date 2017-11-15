@@ -51,7 +51,11 @@ class Patient(models.Model):
         (Other, 'Other'),
     )
     bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
+
     bed_id =  models.CharField(max_length=10)
+
+
+
     mode_of_arrival = models.CharField(max_length=50)
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
