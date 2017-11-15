@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 
 
 class Patient(models.Model):
-    patient_id = models.IntegerField(null=False, primary_key=True)
-    patient_tag = models.CharField(max_length=20, null=False, unique=True)
+    #patient_id = models.IntegerField(null=False, primary_key=True)
+    patient_tag = models.CharField(max_length=20, null=False, unique=True,default=0)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     #sex = models.CharField(max_length=10, null=False)
@@ -20,8 +20,8 @@ class Patient(models.Model):
     sex = models.CharField(max_length=10,
                                       choices=type_of_sex,
                                       default=MALE, blank=False)
-    time_of_admission = models.DateTimeField(default=timezone.now, blank=False)
-    condition = models.CharField(max_length=30)
+    time_of_admission = models.DateTimeField(default=timezone.now, blank=True)
+    condition = models.CharField(max_length=30, blank=True,null=True)
     ICU_CC = 'ICU/CC'
     EU = 'EU'
     MED_SURG = 'MED/SURG'
@@ -50,9 +50,15 @@ class Patient(models.Model):
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
     )
-    bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU ')
-    bed_id =  models.CharField(max_length=10)
-	mode_of_arrival = models.CharField(max_length=50)
+
+
+
+
+
+    bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU',blank=True)
+    bed_id = models.CharField(max_length=10)
+    mode_of_arrival = models.CharField(max_length=50,blank=True)
+
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=10,null=True, blank=True)
@@ -76,7 +82,7 @@ class Patient(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.patient_id)
+        return str(self.patient_tag)
 
 
 class Nurse(models.Model):

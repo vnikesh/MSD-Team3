@@ -108,17 +108,42 @@ def patient_list(request):
    print(pat)
    return render(request, 'eBedTrack/patient_list.html', {'pat': pat})
 
+# @login_required()
+# def patient_new(request):
+#     if request.method == "POST":
+#         form = PatientForm(request.POST)
+#         if form.is_valid():
+#                 patient = form.save(commit=False)
+#                 patient.created_date = timezone.now()
+#                 print('displaying hospital_id '+ request.user.username)
+#                 patient.save()
+#                 pat = Patient.objects.filter(hospital_id=request.user.username)
+#                 return render(request, 'eBedTrack/patient_list.html',
+#                     {'pat': pat})
+#     else:
+#         form = PatientForm()
+#         return render(request, 'eBedTrack/patient_new.html',
+#                       {'form': form})
+
 @login_required()
 def patient_new(request):
+    print('patient new')
     if request.method == "POST":
         form = PatientForm(request.POST)
         if form.is_valid():
                 patient = form.save(commit=False)
                 patient.created_date = timezone.now()
+                hh = Hospital.objects.filter(hospital_id=request.user.username)[0]
+                patient.hospital_id= hh
+
                 patient.save()
                 pat = Patient.objects.filter(hospital_id=request.user.username)
+                print('printing pat '+str(pat))
                 return render(request, 'eBedTrack/patient_list.html',
                     {'pat': pat})
+        else :
+            return render(request, 'eBedTrack/patient_new.html',
+                          {'form': form})
     else:
         form = PatientForm()
         return render(request, 'eBedTrack/patient_new.html',
@@ -151,9 +176,13 @@ def new_bed(request):
         if form.is_valid():
                 bed = form.save(commit=False)
                 bed.created_date = timezone.now()
+                hh = Hospital.objects.filter(hospital_id=request.user.username)[0]
+                print('printing hh value '+str(hh))
+                bed.bh=hh
                 bed.save()
 
                 e=request.user.username
+                print('printing hh value '+str(hh))
                 s=Bed.objects.filter(bh=e).values('bh', 'bed_type').annotate(Count('bed_type'))
                 dict={}
                 c=[]
