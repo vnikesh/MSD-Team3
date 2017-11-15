@@ -5,8 +5,8 @@ from .models import Patient, Nurse, Hospital, Administrator, Bed, ContactUs
 
 class PatientList(admin.ModelAdmin):
     list_display = ('patient_tag', 'first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'bed_type')
-    list_filter = ('hospital_id','first_name', 'last_name')
-    search_fields = ('first_name', 'last_name')
+    list_filter = ('patient_tag','hospital_id','first_name', 'last_name','bed_id')
+    search_fields = ('patient_tag','first_name', 'last_name','bed_id')
     ordering = ['first_name', 'last_name']
 
 
@@ -28,14 +28,14 @@ class BedList(admin.ModelAdmin):
     list_display = ('bed_id', 'bed_type')
     list_filter = ('bed_id', 'bed_type', 'bh')
     search_fields = ('bed_id', 'bed_type','bed_count')
-    ordering = ['bed_id']
+    ordering = ['bed_type']
 
 
 class AdminList(admin.ModelAdmin):
     list_display = ('admin_id', 'admin_name')
     list_filter = ('admin_id', 'admin_name')
     search_fields = ('admin_id', 'admin_name')
-    ordering = ['admin_id']
+    ordering = ['admin_name']
 
 class ContactUsList(admin.ModelAdmin):
     list_display = ('contactId', 'firstName','lastName','emailId','question','created_date')
