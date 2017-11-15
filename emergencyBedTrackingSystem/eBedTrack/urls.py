@@ -26,8 +26,18 @@ urlpatterns = [
     url(r'^accounts/login/hospital_list', views.hospital_list, name='hospital_list'),
     url(r'^accounts/profile/$', views.nurse_home, name='nurse_home'),
     url(r'^bed_availability/eBedTrack/view_details', views.view_details, name='view_details'),
+    url(r'^privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^home/privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^home/legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^bed_availability/privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^bed_availability/legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^contact_us/privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^contact_us/legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^press_report/privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^press_report/legal_notice', views.legal_notice, name='legal_notice'),
 
- ]
+]
 
 
 

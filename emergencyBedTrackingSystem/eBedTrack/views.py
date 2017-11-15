@@ -270,6 +270,16 @@ def view_details(request):
                   {'view_details': view_details})
 
 
+def privacy_statement(request):
+    return render(request, 'eBedTrack/privacy_statement.html',
+                  {'privacy_statement': privacy_statement})
+
+
+def legal_notice(request):
+    return render(request, 'eBedTrack/legal_notice.html',
+                  {'legal_notice': legal_notice})
+
+
 # def press_report(request):
 #     print('inside hospital_list')
 #     h = Hospital.objects.all()
