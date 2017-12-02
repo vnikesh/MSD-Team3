@@ -14,10 +14,6 @@ class BedForm(forms.ModelForm):
         fields = (
             'bed_id','bed_type',)
 
-        def clean_bed_id(self):
-            data = self.cleaned_data['bed_id']
-            return data
-
 class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactUs

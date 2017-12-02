@@ -61,7 +61,6 @@ def contact_us(request):
 
 
 def hospital_list(request):
-
     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/hospital_list.html',
                   {'hospitals': hospitals})
@@ -117,6 +116,17 @@ def patient_new(request):
     un = request.user.username
     if request.method == "POST":
         form = PatientForm(request.POST)
+        bid =form.data['bed_id']
+        print('printing bedid from form '+ str(bid))
+        pbid = str(un) + str(bid)
+        print(form.data)
+
+        mutable = request.POST._mutable
+        print('mutable :'+ str(mutable))
+        request.POST._mutable = True
+        request.POST['bed_id'] = pbid
+        request.POST._mutable = mutable
+
         if form.is_valid():
                 print('form is valid')
                 patient = form.save(commit=False)
@@ -221,6 +231,14 @@ def new_bed(request):
         bid =form.data['bed_id']
         print('printing bedid from form '+ str(bid))
         pbid = str(uname) + str(bid)
+        print(form.data)
+
+        mutable = request.POST._mutable
+        print('mutable :'+ str(mutable))
+        request.POST._mutable = True
+        request.POST['bed_id'] = pbid
+        request.POST._mutable = mutable
+
         if form.is_valid():
                 print('yes, form is valid')
                 bed = form.save(commit=False)
@@ -246,6 +264,7 @@ def new_bed(request):
                     {'s': dict})
     else:
         form = BedForm()
+        print('form is invalid')
         return render(request, 'eBedTrack/new_bed.html',
                       {'form': form})
 
