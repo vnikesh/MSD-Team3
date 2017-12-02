@@ -14,6 +14,9 @@ class BedForm(forms.ModelForm):
         fields = (
             'bed_id','bed_type',)
 
+        def clean_bed_id(self):
+            data = self.cleaned_data['bed_id']
+            return data
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -30,7 +33,7 @@ class NurseForm(forms.ModelForm):
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ('patient_tag', 'first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival',
+        fields = ('patient_tag', 'patient_status','bed_id','first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'mode_of_arrival',
                   'bed_type','hospital_id',
                   'age', 'birth_date', 'phone', 'injuries', 'deposition', 'time_of_surgery',
                   'kin_name', 'relation', 'time_of_death', 'phone')
