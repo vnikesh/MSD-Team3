@@ -12,8 +12,6 @@ urlpatterns = [
     url(r'^press_report/$', views.press_report, name='press_report'),
     url(r'^hospital_list/$', views.hospital_list, name='hospital_list'),
     url(r'^nurse_list/$', views.nurse_list, name='nurse_list'),
-    url(r'^patient_list/$', views.patient_list, name='patient_list'),
-    url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
     url(r'^personal/$', views.personal, name='personal'),
     url(r'^patient_list/personal', views.personal, name='personal'),
     url(r'^personal/$', views.personal, name='personal'),
@@ -36,8 +34,17 @@ urlpatterns = [
     url(r'^contact_us/legal_notice', views.legal_notice, name='legal_notice'),
     url(r'^press_report/privacy_statement', views.privacy_statement, name='privacy_statement'),
     url(r'^press_report/legal_notice', views.legal_notice, name='legal_notice'),
+<<<<<<< HEAD
     url(r'^accounts/login/privacy_statement', views.privacy_statement, name='privacy_statement'),
     url(r'^accounts/login/legal_notice', views.legal_notice, name='legal_notice'),
+=======
+    url(r'^patient/$', views.patient_list, name='patient_list'),
+    url(r'^patient/(?P<pk>\d+)/delete/$', views.patient_delete, name='patient_delete'),
+    url(r'^patient/(?P<pk>\d+)/edit/$', views.patient_edit, name='patient_edit'),
+    url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
+
+
+>>>>>>> c44a36556c98b9cdf60b4651e54c698a9441dd36
 
 ]
 
