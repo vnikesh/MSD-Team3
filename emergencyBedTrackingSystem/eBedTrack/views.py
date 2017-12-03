@@ -270,35 +270,17 @@ def new_bed(request):
 
 
 
+
 def press_report(request):
-    h = Hospital.objects.all()
-    p = Patient.objects.all()
-    pdict = {}
-    dict = {}
-    for x in h:
-        e = Hospital.objects.get(hospital_name=x.hospital_name)
-        dict[e.hospital_name] = e
-        print("print e" , e)
-        print(x)
-        print(dict)
-        for y in p:
-            pc = Patient.objects.filter(hospital_id=x).count()
-            con = Patient.objects.get(patient_id=str(y))
-            pdict[con.condition] = pc
-            print(y)
-
-    # print(dict)
-    # print(p)
-
-    # dict1 = {}
-    # for x in p:
-    #     e1 = Patient.objects.filter(patient_id=x)
-    #     hos1 = Patient.objects.get(patient_id=str(x))
-    #     dict[hos1.condition] = e1
-
-
+        
+    pdict = Patient.objects.all().values('hospital_id','condition').annotate(count=Count('condition'))
+    hdict = Hospital.objects.all().values('hospital_id','hospital_name')
+   
+    list_pdict = [result for result in pdict]
+    list_hosp = [result for result in hdict]
     return render(request, 'eBedTrack/press_report.html',
-                  {'press': pdict, 'hospitals':dict })
+            {'press': list_pdict,'hospitals':list_hosp})
+
 
 
 
