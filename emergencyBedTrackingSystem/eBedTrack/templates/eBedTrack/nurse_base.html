@@ -28,12 +28,6 @@
             height: 100%;
         }
 
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
 
         body {
             background-image: url('/../../static/images/background.png');
@@ -106,11 +100,16 @@
             height: 100%;
         }
 
-        /* Set black background color, white text and some padding */
+     /* Set black background color, white text and some padding */
         footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
+          background-color: black;
+          color: white;
+          padding: 8px;
+          border: 1px;
+          height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+          position: fixed;
+          bottom:0px;
+          width:100%;
         }
 
         body {

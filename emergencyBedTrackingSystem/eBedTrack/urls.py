@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^contact_us/legal_notice', views.legal_notice, name='legal_notice'),
     url(r'^press_report/privacy_statement', views.privacy_statement, name='privacy_statement'),
     url(r'^press_report/legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^accounts/login/privacy_statement', views.privacy_statement, name='privacy_statement'),
+    url(r'^accounts/login/legal_notice', views.legal_notice, name='legal_notice'),
 
 ]
 

@@ -50,7 +50,7 @@ def bed_availability(request):
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
         dict[hos.hospital_name] = e
-        print(dict)
+
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict})
 
@@ -266,8 +266,26 @@ def thanks(request):
 
 
 def view_details(request):
-    return render(request, 'eBedTrack/view_details.html',
-                  {'view_details': view_details})
+    # return render(request, 'eBedTrack/view_details.html',
+    #               {'view_details': view_details})
+
+    print('inside hospital_list')
+    hosp = Hospital.objects.all()
+    be = Bed.objects.all()
+    pdict = {}
+
+    for x in hosp:
+        e = Hospital.objects.filter(hospital_id=x)
+        print(e)
+        for y in be:
+            f = Bed.objects.filter(bed_type=y).count()
+            b = Bed.objects.get(bed_type=str(y))
+            print(b)
+            print(f)
+            pdict[b.bed_type] = f
+            print(pdict)
+    return render(request, 'eBedTrack/bed_availability.html',
+                {'pdict': pdict})
 
 
 def privacy_statement(request):
@@ -278,6 +296,9 @@ def privacy_statement(request):
 def legal_notice(request):
     return render(request, 'eBedTrack/legal_notice.html',
                   {'legal_notice': legal_notice})
+
+
+
 
 
 # def press_report(request):
