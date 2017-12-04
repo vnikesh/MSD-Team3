@@ -1,6 +1,5 @@
 {% load staticfiles %}
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Emergency Bed Tracking System</title>
@@ -16,10 +15,10 @@
             border-radius: 0;
         }
 
-         /*Set height of the grid so sidenav can be 100% (adjust as needed) */
-        /*.row.content {*/
-            /*height: 450px*/
-        /*}*/
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
 
         /* Set gray background color and 100% height */
         .sidenav {
@@ -28,6 +27,12 @@
             height: 100%;
         }
 
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
 
         body {
             background-color: lightskyblue;
@@ -98,16 +103,11 @@
             height: 100%;
         }
 
-     /* Set black background color, white text and some padding */
+        /* Set black background color, white text and some padding */
         footer {
-          background-color: black;
-          color: white;
-          padding: 8px;
-          border: 1px;
-          height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
-          position: fixed;
-          bottom:0px;
-          width:100%;
+            background-color: #555;
+            color: white;
+            padding: 15px;
         }
 
         body {
@@ -124,7 +124,6 @@
             .row.content {
                 height: auto;
             }
-        }
         }
     </style>
 </head>
@@ -143,15 +142,16 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href=" {% url 'eBedTrack:nurse_home'%}">
+            <a class="navbar-brand" href=" {% url 'eBedTrack:admin_home'%}">
                Emergency Bed Tracking System
             </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'eBedTrack:nurse_home' %}">Home</a></li>
-                <li><a href="{% url 'eBedTrack:patient_list' %}">Manage Patient</a></li>
-                <li><a href="{% url 'eBedTrack:nurse_bed_availability' %}">Manage Bed</a></li>
+                <li><a href="{% url 'eBedTrack:admin_home' %}">Home</a></li>
+                <li><a href="{% url 'eBedTrack:admin_hospital_list' %}">Manage Hospital</a></li>
+                <li><a href="{% url 'eBedTrack:nurse_list' %}">Manage Nurse</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="dropdown">
@@ -162,8 +162,6 @@
                             <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
-                {% else %}
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -179,11 +177,7 @@
                         <div class="col-md-3">
                             <div class="thumbnail">
                                 <div class="caption">
-                                        {% if user.is_authenticated %}
-                                        <p><a class="btn btn-default" href="{% url 'eBedTrack:bed_availability' %}"
-                                              role="button">View
-                                            details &raquo;</a></p>
-                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
