@@ -159,6 +159,9 @@ def patient_new(request):
 def patient_edit(request, pk):
     print('inside patient_edit')
     patient = get_object_or_404(Patient, pk=pk)
+    print('patient bed id')
+    print(patient.bed_id)
+    print(request.method)
     if request.method == "POST":
         form = PatientForm(request.POST, instance=patient)
         if form.is_valid():
@@ -240,28 +243,33 @@ def new_bed(request):
         request.POST._mutable = mutable
 
         if form.is_valid():
-                print('yes, form is valid')
-                bed = form.save(commit=False)
-                bed.created_date = timezone.now()
-                hh = Hospital.objects.filter(hospital_id=request.user.username)[0]
-                print('printing hh value '+str(hh))
-                bed.bh=hh
-                bed.save()
-                e=request.user.username
-                print('printing hh value '+str(hh))
-                s=Bed.objects.filter(bh=e).values('bh', 'bed_type').annotate(Count('bed_type'))
-                dict={}
+            print('yes, form is valid')
+            bed = form.save(commit=False)
+            bed.created_date = timezone.now()
+            hh = Hospital.objects.filter(hospital_id=request.user.username)[0]
+            print('printing hh value '+str(hh))
+            bed.bh=hh
+            bed.save()
+            e=request.user.username
+            print('printing hh value '+str(hh))
+            s=Bed.objects.filter(bh=e).values('bh', 'bed_type').annotate(Count('bed_type'))
+            dict={}
+            c=[]
+            for j in s:
                 c=[]
-                for j in s:
-                    c=[]
-                    for k,v in j.items():
-                        if k=='bh':
-                            continue
-                        else:
-                            c.append(v)
-                    dict[c[0]]=c[1]
-        return render(request, 'eBedTrack/nurse_bed_availability.html',
+                for k,v in j.items():
+                    if k=='bh':
+                        continue
+                    else:
+                        c.append(v)
+                dict[c[0]]=c[1]
+            return render(request, 'eBedTrack/nurse_bed_availability.html',
                     {'s': dict})
+        else:
+            form = BedForm()
+            print('form is invalid')
+            return render(request, 'eBedTrack/new_bed.html',
+                      {'form': form})
     else:
         form = BedForm()
         print('form is invalid')

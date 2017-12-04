@@ -51,11 +51,11 @@ class Patient(models.Model):
         (Other, 'Other'),
     )
     bed_type = models.CharField(max_length=50, choices=type_of_bed,default='ICU',blank=True)
-    bed_id = models.CharField(max_length=50,null=False)
+    bed_id = models.CharField(max_length=50,null=False,unique=True)
     mode_of_arrival = models.CharField(max_length=50,blank=True)
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    phone = models.CharField(max_length=10,null=True, blank=True)
+    phone = models.CharField(max_length=20,null=True, blank=True)
     injuries = models.CharField(max_length=50,blank=True)
     deposition = models.CharField(max_length=50, blank=True)
     time_of_surgery = models.CharField(max_length=20,blank=True)
@@ -88,7 +88,7 @@ class Nurse(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
-    phone_no = models.CharField(max_length=12)
+    phone_no = models.CharField(max_length=20)
     created_date = models.DateField(default=timezone.now, blank=True, null=True)
     hospital_id = models.ForeignKey('Hospital',on_delete=models.CASCADE, related_name='hosnurses')
     admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
@@ -99,7 +99,7 @@ class Nurse(models.Model):
 
 class Bed(models.Model):
     bed_id = models.CharField(max_length=50, blank=False, null=False, primary_key=True)
-    bed_type = models.CharField(max_length=10, choices=Patient.type_of_bed,default='ICU')
+    bed_type = models.CharField(max_length=50, choices=Patient.type_of_bed,default='ICU')
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
     status = models.CharField(max_length=20,default='VACANT')
