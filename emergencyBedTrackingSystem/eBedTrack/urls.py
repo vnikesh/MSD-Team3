@@ -7,11 +7,9 @@ urlpatterns = [
     url(r'^bed_availability/$', views.bed_availability, name='bed_availability'),
     url(r'^new_bed/$', views.new_bed, name='new_bed'),
     url(r'^nurse_bed_availability/$', views.nurse_bed_availability, name='nurse_bed_availability'),
-
     url(r'^bed_availability/$', views.bed_count, name='bed_count'),
     url(r'^contact_us/$', views.contact_us, name='contact_us'),
     url(r'^press_report/$', views.press_report, name='press_report'),
-    # url(r'^hospital_list/$', views.admin_hospital_list, name='admin_hospital_list'),
     url(r'^patient_list/$', views.patient_list, name='patient_list'),
     url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
     url(r'^personal/$', views.personal, name='personal'),
@@ -26,18 +24,10 @@ urlpatterns = [
     url(r'^nurse_new/$', views.nurse_new, name='nurse_new'),
     url(r'^admin_home/', views.admin_home, name='admin_home'),
     url(r'^admin_login/', views.admin_login, name='admin_login'),
-
-
     url(r'^bedcount_update/$', views.bedcount_update, name='bedcount_update'),
-    #url(r'^eBedTrack/(?P<pk>\d+)/administrator/$', views.eBedTrack_administrator, name='eBedTrack_administrator'),
-    # url(r'^accounts/profile/nurse_login$', views.nurse_login, name='nurse_login'),
-    # url(r'^accounts/profile/admin_login$', views.admin_login, name='admin_login'),
-    # url(r'^nurse_login$', views.nurse_login, name='nurse_login'),
     url(r'^contact_us/thanks', views.thanks, name='thanks'),
     url(r'^accounts/profile/$', views.nurse_home, name='nurse_home'),
     url(r'^accounts/profile/$', views.nurse_home, name='nurse_home'),
-
-    # url(r'^accounts/(?P<pk>\d+)/profile/$',views.admin_home, name = 'admin_home'),
     url(r'^bed_availability/eBedTrack/view_details', views.view_details, name='view_details'),
     url(r'^privacy_statement', views.privacy_statement, name='privacy_statement'),
     url(r'^legal_notice', views.legal_notice, name='legal_notice'),
@@ -49,6 +39,10 @@ urlpatterns = [
     url(r'^contact_us/legal_notice', views.legal_notice, name='legal_notice'),
     url(r'^press_report/privacy_statement', views.privacy_statement, name='privacy_statement'),
     url(r'^press_report/legal_notice', views.legal_notice, name='legal_notice'),
+    url(r'^patient/$', views.patient_list, name='patient_list'),
+    url(r'^patient/(?P<pk>\d+)/delete/$', views.patient_delete, name='patient_delete'),
+    url(r'^patient/(?P<pk>\d+)/edit/$', views.patient_edit, name='patient_edit'),
+    url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
 
 ]
 
