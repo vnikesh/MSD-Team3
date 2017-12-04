@@ -10,13 +10,13 @@ urlpatterns = [
     url(r'^bed_availability/$', views.bed_count, name='bed_count'),
     url(r'^contact_us/$', views.contact_us, name='contact_us'),
     url(r'^press_report/$', views.press_report, name='press_report'),
-<<<<<<< HEAD
+
     url(r'^patient_list/$', views.patient_list, name='patient_list'),
     url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
-=======
+
     url(r'^hospital_list/$', views.hospital_list, name='hospital_list'),
     url(r'^nurse_list/$', views.nurse_list, name='nurse_list'),
->>>>>>> 0c998f887c581b905882a779f1d7a0acd371acca
+
     url(r'^personal/$', views.personal, name='personal'),
     url(r'^patient_list/personal', views.personal, name='personal'),
     url(r'^admin_hospital_list/$', views.admin_hospital_list, name='admin_hospital_list'),
@@ -48,11 +48,7 @@ urlpatterns = [
     url(r'^patient/(?P<pk>\d+)/delete/$', views.patient_delete, name='patient_delete'),
     url(r'^patient/(?P<pk>\d+)/edit/$', views.patient_edit, name='patient_edit'),
     url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 0c998f887c581b905882a779f1d7a0acd371acca
 
 ]
 
