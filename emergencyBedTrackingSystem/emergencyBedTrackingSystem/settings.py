@@ -73,6 +73,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 
@@ -81,16 +83,16 @@ WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ddjfabolhbqg4i',
-        'USER': 'rpdvxbkkcmianu',
-        'PASSWORD': 'a951ff8959939db400f3771b339de9bc17519af633960cb44749f3c95c8a24b9',
-        'HOST': 'ec2-50-19-251-149.compute-1.amazonaws.com',
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'ddjfabolhbqg4i',
+        # 'USER': 'rpdvxbkkcmianu',
+        # 'PASSWORD': 'a951ff8959939db400f3771b339de9bc17519af633960cb44749f3c95c8a24b9',
+        # 'HOST': 'ec2-50-19-251-149.compute-1.amazonaws.com',
+        # 'PORT': '5432',
 
 
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

@@ -1,27 +1,28 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 
 class Patient(models.Model):
-    #patient_id = models.IntegerField(null=False, primary_key=True)
-    patient_tag = models.CharField(max_length=20, null=False, unique=True,default=0)
+    # patient_tag = models.AutoField(null=False,primary_key=True)
+    patient_tag = models.CharField(max_length=20, unique=True, primary_key=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     #sex = models.CharField(max_length=10, null=False)
-    MALE = 'M'
-    FEMALE = 'F'
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
     type_of_sex = (
         (MALE, 'MALE'),
         (FEMALE, 'FEMALE'),
     )
     sex = models.CharField(max_length=10,
                                       choices=type_of_sex,
-                                      default=MALE, blank=False)
+                                       blank=False , null=False)
     time_of_admission = models.DateTimeField(default=timezone.now, blank=True)
-    condition = models.CharField(max_length=30, blank=True,null=True)
+    condition = models.CharField(max_length=30, blank=True,null=False,)
     ICU_CC = 'ICU/CC'
     EU = 'EU'
     MED_SURG = 'MED/SURG'
@@ -50,12 +51,7 @@ class Patient(models.Model):
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
     )
-
-
-
-
-
-    bed_type = models.CharField(max_length=10, choices=type_of_bed,default='ICU',blank=True)
+    bed_type = models.CharField(max_length=10, choices=type_of_bed, default='ICU', blank=True)
     bed_id = models.CharField(max_length=10)
     mode_of_arrival = models.CharField(max_length=50,blank=True)
 
@@ -92,8 +88,10 @@ class Nurse(models.Model):
     address = models.CharField(max_length=250)
     phone_no = models.CharField(max_length=12)
     created_date = models.DateField(default=timezone.now, blank=True, null=True)
+    username = models.CharField(max_length=20, null=False,blank=False)
+    password = models.CharField(max_length=32, null=False,blank=False)
     hospital_id = models.ForeignKey('Hospital',on_delete=models.CASCADE, related_name='hosnurses')
-    admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
+    # admin_id = models.ForeignKey('Administrator', on_delete=models.CASCADE, related_name='admnurses')
 
     def __str__(self):
         return str(self.nurse_id)
@@ -125,6 +123,7 @@ class Hospital(models.Model):
 class Administrator(models.Model):
     admin_id = models.AutoField(null=False, primary_key=True)
     admin_name = models.CharField(max_length= 100)
+    pass
 
     def __str__(self):
         self.save()

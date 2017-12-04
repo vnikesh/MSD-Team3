@@ -5,14 +5,7 @@ from .models import Hospital, Bed, Patient, Nurse, ContactUs
 class HospitalForm(forms.ModelForm):
     class Meta:
         model = Hospital
-        fields = ('hospital_name', 'address', 'phone_no',)
-
-
-class BedForm(forms.ModelForm):
-    class Meta:
-        model = Bed
-        fields = (
-            'bed_id','bed_type',)
+        fields = ('hospital_id','hospital_name', 'address', 'phone_no','created_date',)
 
 
 class ContactForm(forms.ModelForm):
@@ -22,9 +15,11 @@ class ContactForm(forms.ModelForm):
 
 
 class NurseForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = Nurse
-        fields = ('nurse_id','first_name', 'last_name', 'address', 'phone_no', 'created_date',)
+        fields = ('nurse_id','username','password','hospital_id','first_name', 'last_name', 'phone_no', 'created_date',)
+
 
 
 class PatientForm(forms.ModelForm):
@@ -43,6 +38,11 @@ class PersonalForm(forms.ModelForm):
                   'kin_name', 'relation', 'time_of_death', 'phone',)
 
 class LoginForm(forms.Form):
+    username = forms.CharField(label='Username')
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
+class AdminLoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 

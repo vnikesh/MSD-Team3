@@ -6,7 +6,7 @@ from .models import Patient, Nurse, Hospital, Administrator, Bed, ContactUs
 class PatientList(admin.ModelAdmin):
     list_display = ('patient_tag', 'first_name', 'last_name', 'sex', 'time_of_admission', 'condition', 'bed_type')
     list_filter = ('patient_tag','hospital_id','first_name', 'last_name','bed_id')
-    search_fields = ('patient_tag','first_name', 'last_name','bed_id')
+    search_fields = ('first_name', 'last_name','bed_id')
     ordering = ['first_name', 'last_name']
 
 
@@ -47,7 +47,7 @@ class ContactUsList(admin.ModelAdmin):
 admin.site.register(Patient, PatientList)
 admin.site.register(Nurse, NurseList)
 admin.site.register(Hospital, HospitalList)
-admin.site.register(Administrator)
+admin.site.register(Administrator,AdminList)
 admin.site.register(Bed, BedList)
 admin.site.register(ContactUs, ContactUsList)
 

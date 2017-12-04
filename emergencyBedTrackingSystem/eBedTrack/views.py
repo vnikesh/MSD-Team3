@@ -1,21 +1,27 @@
 from django.utils import timezone
+from django import template
 from .models import *
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse
 from django.forms import forms
 from .forms import *
-from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 from django.db.models import Count
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.contrib.auth import authenticate, login
+
+register = template.Library()
 
 
 def home(request):
     return render(request, 'eBedTrack/home.html',
                   {'eBedTrack': home})
 
-
+@login_required
 def nurse_home(request):
     print('inside nurse home')
     return render(request, 'eBedTrack/nurse_home.html',
@@ -43,7 +49,6 @@ def nurse_bed_availability(request):
 
 
 def bed_availability(request):
-    print('inside hospital_list')
     h = Hospital.objects.all()
     dict = {}
     for x in h:
@@ -68,13 +73,8 @@ def eBedTrack_administrator(request):
     return HttpResponse(status=201)
 
 
-# def contact_us(request):
-#
-#     form_class = forms
-#
-#     return render(request, 'eBedTrack/contact_us.html', {
-#         'form': form_class,
-#     })
+
+
 
 
 def contact_us(request):
@@ -85,7 +85,7 @@ def contact_us(request):
            contact.save()
            contacts = ContactUs.objects.filter(created_date=timezone.now())
            return render(request, 'eBedTrack/contact_us.html',
-                         {'stocks': contacts})
+                         {'contacts': contacts})
    else:
        form = ContactForm()
        # print("Else")
@@ -93,11 +93,7 @@ def contact_us(request):
 
 
 
-def hospital_list(request):
 
-    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
-    return render(request, 'eBedTrack/hospital_list.html',
-                  {'hospitals': hospitals})
 
 @login_required
 def patient_list(request):
@@ -134,8 +130,7 @@ def patient_new(request):
                 patient = form.save(commit=False)
                 patient.created_date = timezone.now()
                 hh = Hospital.objects.filter(hospital_id=request.user.username)[0]
-                patient.hospital_id= hh
-
+                patient.hospital_id = hh
                 patient.save()
                 pat = Patient.objects.filter(hospital_id=request.user.username)
                 print('printing pat '+str(pat))
@@ -217,18 +212,9 @@ def press_report(request):
         print(dict)
         for y in p:
             pc = Patient.objects.filter(hospital_id=x).count()
-            con = Patient.objects.get(patient_id=str(y))
+            con = Patient.objects.get(patient_tag=str(y))
             pdict[con.condition] = pc
             print(y)
-
-    # print(dict)
-    # print(p)
-
-    # dict1 = {}
-    # for x in p:
-    #     e1 = Patient.objects.filter(patient_id=x)
-    #     hos1 = Patient.objects.get(patient_id=str(x))
-    #     dict[hos1.condition] = e1
 
 
     return render(request, 'eBedTrack/press_report.html',
@@ -236,23 +222,7 @@ def press_report(request):
 
 
 
-@login_required
-def nurse_list(request):
-    if request.method == "POST":
-        form = NurseForm(request.POST)
-        if form.is_valid():
-            nurse = form.save(commit=False)
-            nurse.created_date = timezone.now()
-            nurse.save()
-            nurses = Nurse.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/nurse_list.html',
-                {'nurses': nurses})
 
-    else:
-        form = NurseForm()
-       # print("Else")
-        return render(request, 'eBedTrack/nurse_list.html',
-                      {'form': form})
 
 
 @login_required
@@ -274,14 +244,8 @@ def bedcount_update(request):
                       {'form': form})
 
 
-def nurse_login(request):
-    return render(request, 'eBedTrack/nurse_login.html',
-                  {'nurse': nurse_login})
 
 
-def admin_login(request):
-    return render(request, 'eBedTrack/user_login.html',
-                  {'admin_login': admin_login})
 
 
 def success(request):
@@ -308,21 +272,110 @@ def legal_notice(request):
     return render(request, 'eBedTrack/legal_notice.html',
                   {'legal_notice': legal_notice})
 
+# @login_required
+def admin_hospital_new(request):
+   if request.method == "POST":
+       form = HospitalForm(request.POST)
+       if form.is_valid():
+           hospital = form.save(commit=False)
+           hospital.created_date = timezone.now()
+           hospital.save()
+           hospitals = HospitalForm.objects.filter(created_date__lte = timezone.now())
+           return render(request, 'eBedTrack/admin_hospital_list.html',
+                         {'hospitals': hospitals})
+   else:
+       form = HospitalForm()
+       # print("Else")
+   return render(request, 'eBedTrack/admin_hospital_new.html', {'form': form})
 
-# def press_report(request):
-#     print('inside hospital_list')
-#     h = Hospital.objects.all()
-#     dict = {}
-#     for x in h:
-#         e = Bed.objects.filter(bh_id=x).count()
-#         hos = Hospital.objects.get(hospital_id=str(x))
-#         dict[hos.hospital_name] = e
-#
-#     print(dict)
-#
-#     return render(request, 'eBedTrack/press_report.html',
-#                   {'hospitals': dict})
-#
-#     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
-#     return render(request, 'eBedTrack/press_report.html',
-#                   {'hospitals': hospitals})
+
+
+# @permission_required('entity.can_delete', login_url='/loginpage/')
+def admin_home(request):
+
+    return render(request, 'eBedTrack/admin_home.html',
+                  {'eBedTrack': admin_home})
+
+# @login_required
+def nurse_new(request):
+    nurseDetail = Nurse.objects.all()
+    if request.method == "POST":
+        form = NurseForm(request.POST)
+        if form.is_valid():
+            nurse = form.save(commit=False)
+            nurse.created_date = timezone.now()
+            nurse.save()
+            nurses = Nurse.objects.filter(created_date__lte=timezone.now())
+            return render(request, 'eBedTrack/nurse_list.html',
+                {'nurses': nurses})
+    else:
+        form = NurseForm()
+       # print("Else")
+        return render(request, 'eBedTrack/nurse_new.html',
+                      {'form': form})
+
+
+
+# @login_requireded
+def nurse_list(request):
+    nurses = Nurse.objects.all()
+    print(nurses)
+    return render(request, 'eBedTrack/nurse_list.html', {'nurses': nurses})
+
+
+
+def admin_login(request):
+    return render(request, 'eBedTrack/admin_login.html', {'eBedTrack': admin_login})
+     # return HttpResponseRedirect('admin_login')
+
+# @login_required
+def admin_hospital_list(request):
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'eBedTrack/admin_hospital_list.html',
+                  {'hospitals': hospitals})
+
+# @login_required
+def admin_hospital_delete(request, pk):
+   hospital = Hospital.objects.get(pk = pk)
+   hospital.delete()
+   hospitals = Hospital.objects.all()
+   return render(request, 'eBedTrack/admin_hospital_list.html', {'hospitals': hospitals})
+
+# @login_required
+def admin_hospital_edit(request, pk):
+   hospital = get_object_or_404(Hospital, pk  = pk)
+   if request.method == "POST":
+       form = HospitalForm(request.POST, instance=hospital)
+       if form.is_valid():
+           hospital = form.save()
+           hospital.created_date = timezone.now()
+           hospital.save()
+           hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+           return render(request, 'eBedTrack/admin_hospital_list.html', {'hospitals': hospitals})
+   else:
+       # print("else")
+       form = HospitalForm(instance = hospital)
+   return render(request, 'eBedTrack/admin_hospital_edit.html', {'form': form})
+
+# @login_required
+def nurse_delete(request, pk):
+   nurse = Nurse.objects.get(pk = pk)
+   nurse.delete()
+   nurses = Nurse.objects.all()
+   return render(request, 'eBedTrack/nurse_list.html', {'nurses': nurses})
+
+# @login_required
+def nurse_edit(request, pk):
+   nurse = get_object_or_404(Nurse, pk  = pk)
+   if request.method == "POST":
+       form = NurseForm(request.POST, instance=nurse)
+       if form.is_valid():
+           nurse = form.save()
+           nurse.created_date = timezone.now()
+           nurse.save()
+           nurses = Nurse.objects.filter(created_date__lte=timezone.now())
+           return render(request, 'eBedTrack/nurse_list.html', {'nurses': nurses})
+   else:
+       # print("else")
+       form = NurseForm(instance = nurse)
+   return render(request, 'eBedTrack/nurse_edit.html', {'form': form})
