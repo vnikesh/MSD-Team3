@@ -22,7 +22,7 @@ def home(request):
                   {'eBedTrack': home})
 
 
-<<<<<<< HEAD
+
 def adminlogin(request):
 
     if request.user.is_staff:
@@ -32,9 +32,6 @@ def adminlogin(request):
 
 
 @login_required
-=======
-@login_required()
->>>>>>> b6bc550c67a39734374e6da07ecfe4cde257e859
 def nurse_home(request):
     print('inside nurse home')
     user_name = request.user.username
@@ -47,7 +44,7 @@ def nurse_home(request):
         name = hosp.hospital_name
         return render(request, 'eBedTrack/nurse_home.html',{'eBedTrack': nurse_home,'hosp_name':name})
 
-<<<<<<< HEAD
+
     return render(request, 'eBedTrack/nurse_home.html',
                   {'hosp_name':name})
 
@@ -119,11 +116,6 @@ def bed_availability(request):
     #               {'hospitals': dict})
 
     # return render(request, 'eBedTrack/nurse_home.html', {'eBedTrack': nurse_home, 'hosp_name': name})
-=======
->>>>>>> b6bc550c67a39734374e6da07ecfe4cde257e859
-
-
-
 
 
 def bed_count(request):
