@@ -100,7 +100,7 @@ class Nurse(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=250)
-    phone_no = models.CharField(max_length=12)
+    phone_no = models.CharField(max_length=20)
     created_date = models.DateField(default=timezone.now, blank=True, null=True)
     username = models.CharField(max_length=20, null=False,blank=False)
     password = models.CharField(max_length=32, null=False,blank=False)
