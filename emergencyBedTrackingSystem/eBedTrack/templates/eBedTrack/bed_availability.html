@@ -30,34 +30,32 @@
         <div class="col-md-6">
         <h2 style="padding-left: 15Px">Hospital Beds Information</h2>
     <div>
-        <table class="table table-bordered table-hover" style="width: 100%">
+        <table class="table table-bordered table-hover">
             <thead>
-            <tr class="bg-info">
-                <th>Hospital Name</th>
-                <th style="text-align: center">Total number of Beds available</th>
-                <th style="text-align: center">View Details</th>
-            </tr>
+                <tr class="bg-info">
+                    <th>Hospital Name</th>
+                    <th style="text-align: center">Total number of Beds available</th>
+                    <th style="text-align: center">View Details</th>
+                </tr>
             </thead>
             <tbody>
-            {% for k,v  in  hospitals.items %}
+                {% for k,v in hospitals.items %}
                 <tr>
-                    <td>{{ k }}</td>
-                    <td style="text-align: center">{{ v }} </td>
-                    <td>
-                        <table class="data"style="text-align: left; margin-left: 20px;padding: 10px; border: medium; width: 60%">
-                            <!--{% for a,b in bed.items %}-->
-                            <p>1</p><p>2</p>
-                                <!--<p>Bed type:{{ a }} Count:{{ b }}</p>-->
-                            <!--{% endfor %}-->
-
-                        </table>
-                    </td>
-                    <!--<td><button class="btn btn-info" onclick="window.open('eBedTrack/view_details.html','PMMovie','width=750,height=600,toolbar=no,scrollbars=yes,resizable=no,status=no,menubar=no');return false;" href="#">View details</button></td>-->
-                    <!--&lt;!&ndash;<td><button id="das" class="btn btn-info viewButton">View details</button></td>&ndash;&gt;-->
+                <td>{{ k }}</td>
+                <td style="text-align: center">{{ v|length }} </td>
+                 <td>
+                <table class ="data" style="text-align:left">
+                <tr>
+                {% for i in v|length %}
+                <p>BED Type: {{ v.i }} count : {{ v.i }}</p>
+                <tr>
+                {% endfor %}
+                </table>
+                </td>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+{% endfor %}
+</tbody>
+</table>
     </div>
         </div>
 

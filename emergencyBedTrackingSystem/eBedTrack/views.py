@@ -22,7 +22,6 @@ def home(request):
                   {'eBedTrack': home})
 
 
-<<<<<<< HEAD
 def adminlogin(request):
 
     if request.user.is_staff:
@@ -31,10 +30,7 @@ def adminlogin(request):
         return redirect('eBedTrack/admin_login.html')
 
 
-@login_required()
-=======
 @login_required
->>>>>>> a90a7bf453d8408adbe72fec5cb2fc80be0504fa
 def nurse_home(request):
     print('inside nurse home')
     user_name = request.user.username
@@ -42,7 +38,7 @@ def nurse_home(request):
                                      'where hospital_id=%s', [user_name]):
 
         name = hosp.hospital_name
-<<<<<<< HEAD
+
     return render(request, 'eBedTrack/nurse_home.html',
                   {'hosp_name':name})
 
@@ -70,30 +66,36 @@ def nurse_bed_availability(request):
 def bed_availability(request):
     print('inside first responder bed_availability')
     h = Hospital.objects.all()
-    # print(h)
-    # for hosp in h:
-    #     print(hosp)
-    dict = {}
+    print("Hospitals are :")
+    dict ={}
+    dict2 = {}
+    sample = {}
     for x in h:
         e = Bed.objects.filter(bh_id=x).count()
-        hos = Hospital.objects.get(hospital_id=str(x))
-        dict[hos.hospital_name] = e
-        s = Bed.objects.filter(bh=x, status='VACANT').values('bh', 'bed_type').annotate(Count('bed_type'))
-        bedtype = {}
-        print('printing bedtype for hospital ' + str(x))
-        for j in s:
-            c = []
-            for k, v in j.items():
-                if k == 'bh':
-                    continue
-                else:
-                    c.append(v)
-            bedtype[c[0]] = c[1]
-            print(bedtype)
-        h = Hospital.objects.all()
-        hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    hos = Hospital.objects.get(hospital_id=str(x))
+    dict[hos.hospital_name] = [e]
+    s=Bed.objects.filter(bh=x,status='VACANT').values('bh', 'bed_type').annotate(Count('bed_type'))
+    bedtype={}
+    for j in s:
+        c=[]
+    for k,v in j.items():
+        if k=='bh':
+            continue
+        else:
+            c.append(v)
+        bedtype[c[0]]=c[1]
+        for k,v in bedtype.items():
+            s=dict.get(hos.hospital_name)
+            s.append(k)
+            s.append(v)
+            dict[hos.hospital_name] = s
+        print('printing bedtype for hospital '+str(dict))
+    h = Hospital.objects.all()
+
+    print('bedtype outside ' +str(dict))
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/bed_availability.html',
-                      {'hospitals': dict})
+        {'hospitals': dict,'bedtype':bedtype})
 
 
     # print('inside hospital_list')
@@ -106,12 +108,10 @@ def bed_availability(request):
     #
     # return render(request, 'eBedTrack/bed_availability.html',
     #               {'hospitals': dict})
-=======
 
-    return render(request, 'eBedTrack/nurse_home.html', {'eBedTrack': nurse_home, 'hosp_name': name})
+    # return render(request, 'eBedTrack/nurse_home.html', {'eBedTrack': nurse_home, 'hosp_name': name})
 
 
->>>>>>> a90a7bf453d8408adbe72fec5cb2fc80be0504fa
 
 
 
@@ -427,7 +427,6 @@ def new_bed(request):
 
 
 def press_report(request):
-<<<<<<< HEAD
     h = Hospital.objects.all()
     p = Patient.objects.all()
     pdict = {}
@@ -452,10 +451,9 @@ def press_report(request):
     #     e1 = Patient.objects.filter(patient_id=x)
     #     hos1 = Patient.objects.get(patient_id=str(x))
     #     dict[hos1.condition] = e1
-=======
+
     pdict = Patient.objects.all().values('hospital_id', 'condition').annotate(count=Count('condition'))
     hdict = Hospital.objects.all().values('hospital_id', 'hospital_name')
->>>>>>> a90a7bf453d8408adbe72fec5cb2fc80be0504fa
 
     list_pdict = [result for result in pdict]
     list_hosp = [result for result in hdict]

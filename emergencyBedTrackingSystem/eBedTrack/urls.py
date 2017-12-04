@@ -51,12 +51,6 @@ urlpatterns = [
     url(r'^patient/(?P<pk>\d+)/edit/$', views.patient_edit, name='patient_edit'),
     url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a90a7bf453d8408adbe72fec5cb2fc80be0504fa
 ]
 
 
