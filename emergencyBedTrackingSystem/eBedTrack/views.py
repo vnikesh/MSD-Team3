@@ -66,18 +66,53 @@ def hospital_list(request):
                   {'hospitals': hospitals})
 
 
+# def bed_availability(request):
+#     print('inside hospital_list')
+#     h = Hospital.objects.all()
+#     print('hospital obj'+str(h))
+#     dict = {}
+#     for x in h:
+#         e = Bed.objects.filter(bh_id=x).count()
+#         hos = Hospital.objects.get(hospital_id=str(x))
+#         dict[hos.hospital_name] = e
+#         print(dict)
+#     return render(request, 'eBedTrack/bed_availability.html',
+#                   {'hospitals': dict})
+#
+
 def bed_availability(request):
-    print('inside hospital_list')
+    print('inside first responder bed_availability')
     h = Hospital.objects.all()
-    print('hospital obj'+str(h))
-    dict = {}
+    print("Hospitals are :")
+    dict ={}
+    dict2 = {}
+    sample = {}
     for x in h:
         e = Bed.objects.filter(bh_id=x).count()
         hos = Hospital.objects.get(hospital_id=str(x))
-        dict[hos.hospital_name] = e
-        print(dict)
+        dict[hos.hospital_name] = [e]
+        s=Bed.objects.filter(bh=x,status='VACANT').values('bh', 'bed_type').annotate(Count('bed_type'))
+        bedtype={}
+        for j in s:
+            c=[]
+            for k,v in j.items():
+                if k=='bh':
+                    continue
+                else:
+                    c.append(v)
+            bedtype[c[0]]=c[1]
+        for k,v in bedtype.items():
+            s=dict.get(hos.hospital_name)
+            s.append(k)
+            s.append(v)
+            dict[hos.hospital_name] = s
+        print('printing bedtype for hospital '+str(dict))
+        h = Hospital.objects.all()
+
+    print('bedtype outside ' +str(dict))
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/bed_availability.html',
-                  {'hospitals': dict})
+                  {'hospitals': dict,'bedtype':bedtype})
 
 @login_required()
 def nurse_bed_availability(request):
