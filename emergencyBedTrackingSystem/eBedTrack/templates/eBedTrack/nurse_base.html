@@ -152,7 +152,7 @@
                 <li><a href="{% url 'eBedTrack:nurse_home' %}">Home</a></li>
                 <li><a href="{% url 'eBedTrack:patient_list' %}">Manage Patient</a></li>
                 <li><a href="{% url 'eBedTrack:nurse_bed_availability' %}">Manage Bed</a></li>
-            <ul class="nav navbar-nav navbar-right">
+             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -162,8 +162,6 @@
                             <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
-                {% else %}
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 {% endif %}
             </ul>
         </div>

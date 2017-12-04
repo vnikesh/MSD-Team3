@@ -8,7 +8,7 @@
              <span class="btn btn-primary">Add Patient</span>
          </a>
         <div>
-        <table class="table table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover">
             <thead class="th">
             <tr class="d0">
 				<th>Patient Tag</th>
@@ -16,24 +16,14 @@
                 <th>Bed Type</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-<<<<<<< HEAD
-                <th>Patient Sex</th>
-=======
                 <th>Patient status</th>
                 <th>Condition</th>
                 <th colspan="2">Actions</th>
->>>>>>> 0c998f887c581b905882a779f1d7a0acd371acca
             </tr>
             </thead>
             <tbody>
             {% for patient in patients %}
                 <tr>
-<<<<<<< HEAD
-                    <td>{{ i.patient_tag }}</td>
-					<td>{{ i.first_name }}</td>
-                    <td>{{ i.last_name }}</td>
-                    <td>{{ i.sex }}</td>
-=======
                     <td>{{ patient.patient_tag }}</td>
                     <td>{{ patient.bed_id}}</td>
                     <td>{{patient.bed_type}}</td>
@@ -47,7 +37,6 @@
                            class="btn btn-danger">Delete Patient</a>
                     </td>
                     </td>
->>>>>>> 0c998f887c581b905882a779f1d7a0acd371acca
                 </tr>
             {% endfor %}
             </tbody>
