@@ -85,19 +85,6 @@ def hospital_list(request):
                   {'hospitals': hospitals})
 
 
-# def bed_availability(request):
-#     print('inside hospital_list')
-#     h = Hospital.objects.all()
-#     print('hospital obj'+str(h))
-#     dict = {}
-#     for x in h:
-#         e = Bed.objects.filter(bh_id=x).count()
-#         hos = Hospital.objects.get(hospital_id=str(x))
-#         dict[hos.hospital_name] = e
-#         print(dict)
-#     return render(request, 'eBedTrack/bed_availability.html',
-#                   {'hospitals': dict})
-#
 
 def bed_availability(request):
     print('inside first responder bed_availability')
@@ -107,10 +94,11 @@ def bed_availability(request):
     dict2 = {}
     sample = {}
     for x in h:
-        e = Bed.objects.filter(bh_id=x).count()
+        e = Bed.objects.filter(bh_id=str(x),status='VACANT').count()
         hos = Hospital.objects.get(hospital_id=str(x))
         dict[hos.hospital_name] = [e]
-        s=Bed.objects.filter(bh=x,status='VACANT').values('bh', 'bed_type').annotate(Count('bed_type'))
+        s=Bed.objects.filter(bh=str(x),status='VACANT').values('bh','bed_type').annotate(Count('bed_type'))
+        print('s value is '+str(s))
         bedtype={}
         for j in s:
             c=[]
@@ -132,6 +120,7 @@ def bed_availability(request):
     hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict,'bedtype':bedtype})
+
 
 @login_required()
 def nurse_bed_availability(request):
@@ -518,7 +507,7 @@ def admin_hospital_list(request):
 def admin_hospital_delete(request, pk):
    hospital = Hospital.objects.get(pk = pk)
    hospital.delete()
-   hospitals = Hospital.objects.all()
+   hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
    return render(request, 'eBedTrack/admin_hospital_list.html', {'hospitals': hospitals})
 
 @permission_required('is_staff')

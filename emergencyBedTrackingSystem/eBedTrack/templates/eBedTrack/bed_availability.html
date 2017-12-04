@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Emergency Bed Tracking System</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 
      <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-primary" style="margin-top: 20px">
+                <div class="panel panel-primary">
                     <div class="panel-heading">Welcome!</div>
                     <div class="panel-body">
                         Check the availability of Beds in various Hospitals here
@@ -37,14 +37,24 @@
             {% for k,v  in  hospitals.items %}
                 <tr>
                     <td>{{ k }}</td>
-                    <td style="text-align: center">{{ v|length }} </td>
+                    <td style="text-align: center">{{ v.0 }} </td>
                     <td>
                         <table class ="data" style="text-align:left">
+                            <!--<tr>-->
+                                <!--{% for i in "v"|rjust:"100" %}-->
+                                <!--<p>BED Type: {{ v.i }} count : {{ v.i }}</p>-->
+                                <!--{% endfor %}-->
+                            <!--<tr>-->
                             <tr>
-                                {% cycle i in v|length %}
-                                <td style="text-align: center">BED Type: {{ i.bedtype }} count : {{ v.i }}</td><br>
-                                {% empty %}
-                            <tr>
+
+                                {% for i in v|slice:"1:100" %}
+                                {{ i }}
+                                </li>
+                                {% endfor %}
+
+
+                        </tr>
+
                         </table>
                     </td>
                 </tr>
