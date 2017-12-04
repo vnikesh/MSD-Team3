@@ -163,6 +163,7 @@ def hospital_list(request):
                   {'hospitals': hospitals})
 
 
+<<<<<<< HEAD
 # def bed_availability(request):
 #     print('inside hospital_list')
 #     h = Hospital.objects.all()
@@ -175,6 +176,44 @@ def hospital_list(request):
 #         print(dict)
 #     return render(request, 'eBedTrack/bed_availability.html',
 #                   {'hospitals': dict})
+=======
+
+def bed_availability(request):
+    print('inside first responder bed_availability')
+    h = Hospital.objects.all()
+    print("Hospitals are :")
+    dict ={}
+    dict2 = {}
+    sample = {}
+    for x in h:
+        e = Bed.objects.filter(bh_id=str(x),status='VACANT').count()
+        hos = Hospital.objects.get(hospital_id=str(x))
+        dict[hos.hospital_name] = [e]
+        s=Bed.objects.filter(bh=str(x),status='VACANT').values('bh','bed_type').annotate(Count('bed_type'))
+        print('s value is '+str(s))
+        bedtype={}
+        for j in s:
+            c=[]
+            for k,v in j.items():
+                if k=='bh':
+                    continue
+                else:
+                    c.append(v)
+            bedtype[c[0]]=c[1]
+        for k,v in bedtype.items():
+            s=dict.get(hos.hospital_name)
+            s.append(k)
+            s.append(v)
+            dict[hos.hospital_name] = s
+        print('printing bedtype for hospital '+str(dict))
+        h = Hospital.objects.all()
+
+    print('bedtype outside ' +str(dict))
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'eBedTrack/bed_availability.html',
+                  {'hospitals': dict,'bedtype':bedtype})
+
+>>>>>>> 2c83ac409d77546c16ff4a71d4170c4203d97243
 
 @login_required()
 def nurse_bed_availability(request):
@@ -604,7 +643,7 @@ def admin_hospital_list(request):
 def admin_hospital_delete(request, pk):
    hospital = Hospital.objects.get(pk = pk)
    hospital.delete()
-   hospitals = Hospital.objects.all()
+   hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
    return render(request, 'eBedTrack/admin_hospital_list.html', {'hospitals': hospitals})
 
 @permission_required('is_staff')

@@ -83,11 +83,15 @@ WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'ddjfabolhbqg4i',
-        # 'USER': 'rpdvxbkkcmianu',
-        # 'PASSWORD': 'a951ff8959939db400f3771b339de9bc17519af633960cb44749f3c95c8a24b9',
-        # 'HOST': 'ec2-50-19-251-149.compute-1.amazonaws.com',
+       # 'ENGINE': 'django.db.backends.postgresql',
+
+        # 'NAME': 'dcbfd5oq5vujto',
+        # 'USER': 'ubbvlmgumjkrng',
+        # 'PASSWORD': 'ac7f0286b460680f4cf373f4aa0a62ad08e6ace6137096e1810a1c859bba09ae',
+        # 'HOST': 'ec2-184-73-247-240.compute-1.amazonaws.com',
+
+
+
         # 'PORT': '5432',
 
 
