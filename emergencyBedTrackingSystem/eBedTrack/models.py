@@ -6,11 +6,9 @@ from django.contrib.auth.models import User
 
 
 class Patient(models.Model):
-    #patient_id = models.IntegerField(null=False, primary_key=True)
     patient_tag = models.CharField(max_length=20, null=False, unique=True,default=0)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    #sex = models.CharField(max_length=10, null=False)
     MALE = 'M'
     FEMALE = 'F'
     type_of_sex = (
@@ -21,7 +19,21 @@ class Patient(models.Model):
                                       choices=type_of_sex,
                                       default=MALE, blank=False)
     time_of_admission = models.DateTimeField(default=timezone.now, blank=True)
-    condition = models.CharField(max_length=30, blank=True,null=True)
+    Undetermined = 'Undetermined'
+    Good = 'Good'
+    Fair = 'Fair'
+    Serious = 'Serious'
+    Critical = 'Critical'
+    Dead = 'Dead'
+    cond_type =(
+        (Undetermined,'Undetermined'),
+        (Good,'Good'),
+        (Fair,'Fair'),
+        (Serious,'Serious'),
+        (Critical,'Critical'),
+        (Dead,'Dead')
+    )
+    condition = models.CharField(max_length=50,choices=cond_type,default=Undetermined)
     ICU_CC = 'ICU/CC'
     EU = 'EU'
     MED_SURG = 'MED/SURG'
