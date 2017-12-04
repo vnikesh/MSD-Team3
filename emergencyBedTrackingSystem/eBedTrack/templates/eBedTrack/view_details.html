@@ -8,27 +8,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
-    <table class="table table-bordered table-condensed" style="text-align: center; margin-left: 10px">
-        <tr>
-            <th style="text-align: center">Bed Type</th>
-            <th style="text-align: center">Number of Beds Available</th>
-        </tr>
-        {% for bed_type in bed.items %}
-        <tr><td>AD ICU/CC </td> <td> {{ f }} </td></tr>
-        <tr><td>ER</td> <td>1</td></tr>
-        <tr><td>Med/Surg</td> <td>1</td></tr>
-        <tr><td>OB</td> <td>3</td></tr>
-        <tr><td>SICU</td> <td> 2</td></tr>
-        <tr><td>Neg Pres/ISO</td> <td>2</td></tr>
-        <tr><td>OR</td> <td> 1</td></tr>
-        <tr><td>Peds</td> <td> 2</td></tr>
-        <tr><td>PICU</td> <td> 1</td></tr>
-        <tr><td>NICU</td> <td> 1</td></tr>
-        <tr><td>Burn</td> <td> 2</td></tr>
-        <tr><td>Mental Health</td> <td> 2</td></tr>
-        <tr><td>Others</td> <td> 3</td></tr>
-        {% endfor %}
-    </table>
+
+        <table class="data" id="details" style="text-align: left; margin-left: 20px; margin-top: 30%; border: medium; background-color: white; padding: 20px">
+                            {% for b,f in pdict.items %}
+                            <tr>
+                                <td>{{ b }} : {{ f }}</td>
+                                <td>&nbsp;&nbsp;AD ICU/CC: &nbsp;&nbsp;&nbsp;</td>
+                                <td>ER: 4&nbsp;&nbsp;&nbsp;</td>
+                                <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;OB: 3&nbsp;&nbsp;&nbsp;</td>
+                                <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>
+                                <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;OR: 7&nbsp;&nbsp;&nbsp;</td>
+                                <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>
+                                <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;NICU: 4&nbsp;&nbsp;&nbsp;</td>
+                                <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;&nbsp;Others: 10</td>
+                            </tr>
+                            {% endfor %}
+
+                        </table>
 </body>
 </html>
 {% endblock %}

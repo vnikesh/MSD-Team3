@@ -30,7 +30,7 @@
         <div class="col-md-6">
         <h2 style="padding-left: 15Px">Hospital Beds Information</h2>
     <div>
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" style="width: 100%">
             <thead>
             <tr class="bg-info">
                 <th>Hospital Name</th>
@@ -43,8 +43,17 @@
                 <tr>
                     <td>{{ k }}</td>
                     <td style="text-align: center">{{ v }} </td>
+                    <td>
+                        <table class="data"style="text-align: left; margin-left: 20px;padding: 10px; border: medium; width: 60%">
+                            <!--{% for a,b in bed.items %}-->
+                            <p>1</p><p>2</p>
+                                <!--<p>Bed type:{{ a }} Count:{{ b }}</p>-->
+                            <!--{% endfor %}-->
+
+                        </table>
+                    </td>
                     <!--<td><button class="btn btn-info" onclick="window.open('eBedTrack/view_details.html','PMMovie','width=750,height=600,toolbar=no,scrollbars=yes,resizable=no,status=no,menubar=no');return false;" href="#">View details</button></td>-->
-                    <td><button id="das" class="btn btn-info">View details</button></td>
+                    <!--&lt;!&ndash;<td><button id="das" class="btn btn-info viewButton">View details</button></td>&ndash;&gt;-->
                 </tr>
             {% endfor %}
             </tbody>
@@ -53,41 +62,41 @@
         </div>
 
 
-        <div class="col-md-4">
-        <table class="data" id="details" style="text-align: left; margin-left: 20px; margin-top: 30%; border: medium; background-color: white; padding: 20px">
-                            {% for b,f in pdict.items %}
-                            <tr>
-                                <td>{{ b }} : {{ f }}</td>
-                                <td>&nbsp;&nbsp;AD ICU/CC: &nbsp;&nbsp;&nbsp;</td>
-                                <td>ER: 4&nbsp;&nbsp;&nbsp;</td>
-                                <td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;OB: 3&nbsp;&nbsp;&nbsp;</td>
-                                <td>SICU: 2&nbsp;&nbsp;&nbsp;</td>
-                                <td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;OR: 7&nbsp;&nbsp;&nbsp;</td>
-                                <td>Peds: 2&nbsp;&nbsp;&nbsp;</td>
-                                <td>PICU: 4&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;NICU: 4&nbsp;&nbsp;&nbsp;</td>
-                                <td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;Others: 10</td>
-                            </tr>
-                            {% endfor %}
+        <!--<div class="col-md-4">-->
+        <!--<table class="data" id="details" style="display: none; text-align: left; margin-left: 20px; margin-top: 30%; border: medium; background-color: white; padding: 20px">-->
+                            <!--{% for b,f in pdict.items %}-->
+                            <!--<tr>-->
+                                <!--<td>{{ b }} : {{ f }}</td>-->
+                                <!--<td>&nbsp;&nbsp;AD ICU/CC: &nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>ER: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Med/Surg: 40&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>&nbsp;&nbsp;OB: 3&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>SICU: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Neg Pres/ISO: 5&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>&nbsp;&nbsp;OR: 7&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Peds: 2&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>PICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>&nbsp;&nbsp;NICU: 4&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Burn: 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+                                <!--<td>Mental Health: 12&nbsp;&nbsp;&nbsp;</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>&nbsp;&nbsp;Others: 10</td>-->
+                            <!--</tr>-->
+                            <!--{% endfor %}-->
 
-                        </table>
-            </div>
+                        <!--</table>-->
+            <!--</div>-->
 
 
 
-    </div>
+    <!--</div>-->
 
 
 
@@ -104,32 +113,38 @@
     <!--$("#details").hide();-->
 <!--});-->
 
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--<script>-->
+
+<!--//var view_details = document.getElementsByClassName('btn btn-info');-->
+<!--var view_details = $('.viewButton');-->
+<!--n = 0;-->
+<!--while (n > 0) {-->
+    <!--view_details.on('click', function () {-->
+   <!--// view_details[n].onclick = function details(){-->
+    <!--alert("inside function")-->
+    <!--var table = document.getElementById('details');-->
+
+    <!--if (table.style.display !== 'none')-->
+    <!--{-->
+        <!--table.style.display = 'none';-->
+        <!--view_details.innerHTML = 'View details'-->
+    <!--}-->
+    <!--else {-->
+        <!--table.style.display = 'inline-table';-->
+        <!--// change button text-->
+        <!--view_details.innerHTML = 'Hide details'-->
+    <!--}-->
+<!--}-->
+ <!--//n=n++;-->
+ <!--n+=1;-->
+<!--}-->
+<!--&lt;!&ndash;$(document).ready(function() {&ndash;&gt;-->
+    <!--&lt;!&ndash;$("#view").click(function() {&ndash;&gt;-->
+        <!--&lt;!&ndash;alert(hello)&ndash;&gt;-->
+       <!--&lt;!&ndash;$("#details").toggle();&ndash;&gt;-->
+    <!--&lt;!&ndash;});&ndash;&gt;-->
+<!--&lt;!&ndash;});&ndash;&gt;-->
 <!--</script>-->
-<script>
-
-var view_details = document.getElementsByClassName('btn btn-info');
-
-view_details[0].onclick = function details(){
-    alert("inside function")
-   var table = document.getElementById('details');
-
-   if (table.style.display !== 'none')
-   {
-     table.style.display = 'none';
-     view_details.innerHTML = 'View details'
-   }
-   else {
-     table.style.display = 'inline-table';
-     // change button text
-       view_details.innerHTML = 'Hide details'
-   }
- }
- <!--$(document).ready(function() {-->
-    <!--$("#view").click(function() {-->
-        <!--alert(hello)-->
-       <!--$("#details").toggle();-->
-    <!--});-->
-<!--});-->
-</script>
 
 {% endblock %}
