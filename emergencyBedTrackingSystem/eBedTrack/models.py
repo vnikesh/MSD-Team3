@@ -1,28 +1,39 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 
 class Patient(models.Model):
-    # patient_tag = models.AutoField(null=False,primary_key=True)
-    patient_tag = models.CharField(max_length=20, unique=True, primary_key=True)
+    patient_tag = models.CharField(max_length=20, null=False, unique=True,default=0)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
-    #sex = models.CharField(max_length=10, null=False)
-    MALE = 'MALE'
-    FEMALE = 'FEMALE'
+    MALE = 'M'
+    FEMALE = 'F'
     type_of_sex = (
         (MALE, 'MALE'),
         (FEMALE, 'FEMALE'),
     )
     sex = models.CharField(max_length=10,
                                       choices=type_of_sex,
-                                       blank=False , null=False)
+                                      default=MALE, blank=False)
     time_of_admission = models.DateTimeField(default=timezone.now, blank=True)
-    condition = models.CharField(max_length=30, blank=True,null=False,)
+    Undetermined = 'Undetermined'
+    Good = 'Good'
+    Fair = 'Fair'
+    Serious = 'Serious'
+    Critical = 'Critical'
+    Dead = 'Dead'
+    cond_type =(
+        (Undetermined,'Undetermined'),
+        (Good,'Good'),
+        (Fair,'Fair'),
+        (Serious,'Serious'),
+        (Critical,'Critical'),
+        (Dead,'Dead')
+    )
+    condition = models.CharField(max_length=50,choices=cond_type,default=Undetermined)
     ICU_CC = 'ICU/CC'
     EU = 'EU'
     MED_SURG = 'MED/SURG'
@@ -51,13 +62,12 @@ class Patient(models.Model):
         (Mental_Health,'Mental-Health'),
         (Other, 'Other'),
     )
-    bed_type = models.CharField(max_length=10, choices=type_of_bed, default='ICU', blank=True)
-    bed_id = models.CharField(max_length=10)
+    bed_type = models.CharField(max_length=50, choices=type_of_bed,default='ICU',blank=True)
+    bed_id = models.CharField(max_length=50,null=False,unique=True)
     mode_of_arrival = models.CharField(max_length=50,blank=True)
-
     age = models.CharField(max_length=10,null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    phone = models.CharField(max_length=10,null=True, blank=True)
+    phone = models.CharField(max_length=20,null=True, blank=True)
     injuries = models.CharField(max_length=50,blank=True)
     deposition = models.CharField(max_length=50, blank=True)
     time_of_surgery = models.CharField(max_length=20,blank=True)
@@ -66,8 +76,12 @@ class Patient(models.Model):
     time_of_death = models.CharField(max_length=20,blank=True)
     created_date = models.DateTimeField(default=timezone.now,blank=True)
     updated_date = models.DateTimeField(auto_now_add=True, null = True)
-    nurse_id= models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null=True)
+    nurse_id = models.ForeignKey("Nurse", on_delete=models.CASCADE, related_name='nurpatients', null = False,default=1)
     hospital_id = models.ForeignKey("Hospital", on_delete=models.CASCADE, related_name='hosppatients', null=True)
+    Admitted = 'Admitted'
+    Discharged = 'Discharged'
+    status =( (Admitted,'Admitted'),(Discharged,'Discharged'),)
+    patient_status = models.CharField(max_length=40, choices=status, default='Admitted',blank=True)
 
     def created(self):
         self.time_of_admission = timezone.now()
@@ -98,10 +112,11 @@ class Nurse(models.Model):
 
 
 class Bed(models.Model):
-    bed_id = models.IntegerField(blank=False, null=False, primary_key=True)
-    bed_type = models.CharField(max_length=10, choices=Patient.type_of_bed,default='ICU')
+    bed_id = models.CharField(max_length=50, blank=False, null=False, primary_key=True)
+    bed_type = models.CharField(max_length=50, choices=Patient.type_of_bed,default='ICU')
     created_date = models.DateField(default=timezone.now)
     bh = models.ForeignKey('Hospital', on_delete=models.CASCADE, related_name='hosbeds')
+    status = models.CharField(max_length=20,default='VACANT')
 
     def __str__(self):
         self.save()
@@ -123,7 +138,6 @@ class Hospital(models.Model):
 class Administrator(models.Model):
     admin_id = models.AutoField(null=False, primary_key=True)
     admin_name = models.CharField(max_length= 100)
-    pass
 
     def __str__(self):
         self.save()
@@ -141,5 +155,3 @@ class ContactUs(models.Model):
         self.save()
         self.created_date = timezone.now()
         return str(self.contactId)
-
-

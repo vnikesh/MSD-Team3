@@ -9,13 +9,13 @@
          </a>
 
         <div>
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-bordered table-hover">
             <thead class="th">
             <tr class="d0">
 				<th>Patient Tag</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Phone No</th>
+                <th>Patient Sex</th>
             </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@
                     <td>{{ i.patient_tag }}</td>
 					<td>{{ i.first_name }}</td>
                     <td>{{ i.last_name }}</td>
-                    <td>{{ i.phone }}</td>
+                    <td>{{ i.sex }}</td>
                 </tr>
             {% endfor %}
             </tbody>
