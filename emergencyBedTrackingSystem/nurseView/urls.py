@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^patient_details/$', views.patient_det, name='patient_det'),
     url(r'^accounts/profile/$', views.nurse_home, name='nurse_home'),
 
-
  ]
 
 

@@ -66,9 +66,10 @@
         }
 
         body {
-            background-image: url('/../../static/images/background.png');
-            opacity: 1;
-            background-repeat: repeat-x;
+            /*background-image: url('/../../static/images/background.png');*/
+            /*opacity: 1;*/
+            /*background-repeat: repeat-x;*/
+            background-color: lightskyblue;
         }
 
         /* On small screens, set height to 'auto' for sidenav and grid */
@@ -87,7 +88,7 @@
             }
 
             #myInput {
-                background-image: url('/../../static/css/searchicon.png');
+                background-image: url('/../../static/images/background.png');
                 background-position: 10px 10px;
                 background-repeat: no-repeat;
                 width: 100%;
@@ -191,47 +192,37 @@
                 <li><a href="{% url 'eBedTrack:contact_us' %}">Contact Us</a></li>
                 <li><a href="{% url 'eBedTrack:press_report' %}">Press Report</a></li>
             </ul>
-             <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu"  role="menu">
-                            <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                        </ul>
-                    </li>
-                {% else %}
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                {% endif %}
-            </ul>
+
         </div>
     </div>
 </nav>
+
 <div class="content container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             {% block content %}
                 <div class="links">
                     <!-- Example row of columns -->
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="thumbnail">
                                 <div class="caption">
-                                        {% if user.is_authenticated %}
+
                                         <p><a class="btn btn-default" href="{% url 'eBedTrack:bed_availability' %}"
                                               role="button">View
                                             details &raquo;</a></p>
-                                    {% endif %}
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endblock %}
+            </div>
         </div>
     </div>
-</div>
+
+
 
 </body>
 </html>
