@@ -5,8 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Emergency Bed Tracking System</title>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -28,15 +26,12 @@
 
 <h2>Check the availability of Beds in various Hospitals here</h2>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
-=======
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
->>>>>>> 2c83ac409d77546c16ff4a71d4170c4203d97243
 </head>
 
      <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary" style="margin-top: 20px">
                     <div class="panel-heading">Welcome!</div>
                     <div class="panel-body">
                         Check the availability of Beds in various Hospitals here
@@ -66,7 +61,6 @@
                  <td>
                 <table class ="data" style="text-align:left">
                 <tr>
-<<<<<<< HEAD
                 {% for i in v|length %}
                 <p>BED Type: {{ v.i }} count : {{ v.i }}</p>
                 <tr>
@@ -78,7 +72,8 @@
 </tbody>
 </table>
     </div>
-        </div>
+            </div></div>
+
 
 
         <!--<div class="col-md-4">-->
@@ -166,32 +161,4 @@
 <!--&lt;!&ndash;});&ndash;&gt;-->
 <!--</script>-->
 
-=======
-                    <td>{{ k }}</td>
-                    <td style="text-align: center">{{ v.0 }} </td>
-                    <td>
-                        <table class ="data" style="text-align:left">
-                            <!--<tr>-->
-                                <!--{% for i in "v"|rjust:"100" %}-->
-                                <!--<p>BED Type: {{ v.i }} count : {{ v.i }}</p>-->
-                                <!--{% endfor %}-->
-                            <!--<tr>-->
-                            <tr>
-
-                                {% for i in v|slice:"1:100" %}
-                                {{ i }}
-                                </li>
-                                {% endfor %}
-
-
-                        </tr>
-
-                        </table>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
->>>>>>> 2c83ac409d77546c16ff4a71d4170c4203d97243
 {% endblock %}

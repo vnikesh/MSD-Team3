@@ -45,9 +45,6 @@ def nurse_home(request):
         return render(request, 'eBedTrack/nurse_home.html',{'eBedTrack': nurse_home,'hosp_name':name})
 
 
-    return render(request, 'eBedTrack/nurse_home.html',
-                  {'hosp_name':name})
-
 
 def nurse_bed_availability(request):
     print('inside hospital_list')
@@ -163,7 +160,6 @@ def hospital_list(request):
                   {'hospitals': hospitals})
 
 
-<<<<<<< HEAD
 # def bed_availability(request):
 #     print('inside hospital_list')
 #     h = Hospital.objects.all()
@@ -176,7 +172,6 @@ def hospital_list(request):
 #         print(dict)
 #     return render(request, 'eBedTrack/bed_availability.html',
 #                   {'hospitals': dict})
-=======
 
 def bed_availability(request):
     print('inside first responder bed_availability')
@@ -213,7 +208,6 @@ def bed_availability(request):
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict,'bedtype':bedtype})
 
->>>>>>> 2c83ac409d77546c16ff4a71d4170c4203d97243
 
 @login_required()
 def nurse_bed_availability(request):
