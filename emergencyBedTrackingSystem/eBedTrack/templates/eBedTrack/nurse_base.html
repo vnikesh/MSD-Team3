@@ -16,10 +16,10 @@
             border-radius: 0;
         }
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 450px
-        }
+         /*Set height of the grid so sidenav can be 100% (adjust as needed) */
+        /*.row.content {*/
+            /*height: 450px*/
+        /*}*/
 
         /* Set gray background color and 100% height */
         .sidenav {
@@ -28,12 +28,6 @@
             height: 100%;
         }
 
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
 
         body {
             background-color: lightskyblue;
@@ -104,11 +98,16 @@
             height: 100%;
         }
 
-        /* Set black background color, white text and some padding */
+     /* Set black background color, white text and some padding */
         footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
+          background-color: black;
+          color: white;
+          padding: 8px;
+          border: 1px;
+          height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+          position: fixed;
+          bottom:0px;
+          width:100%;
         }
 
         body {
@@ -165,7 +164,7 @@
                         </ul>
                     </li>
                 {% endif %}
-            </ul>
+             </ul>
         </div>
     </div>
 </nav>

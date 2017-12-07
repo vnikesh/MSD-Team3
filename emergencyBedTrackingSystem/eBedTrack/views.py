@@ -22,7 +22,16 @@ def home(request):
                   {'eBedTrack': home})
 
 
-@login_required()
+
+def adminlogin(request):
+
+    if request.user.is_staff:
+        return redirect('eBedTrack/nurse_login.html')
+    else:
+        return redirect('eBedTrack/admin_login.html')
+
+
+@login_required
 def nurse_home(request):
     print('inside nurse home')
     user_name = request.user.username
@@ -41,7 +50,73 @@ def nurse_home(request):
 
 
 
+def nurse_bed_availability(request):
+    print('inside hospital_list')
+    e=request.user.username
+    s=Bed.objects.filter(bh=e).values('bh', 'bed_type').annotate(Count('bed_type'))
+    dict={}
+    c=[]
+    for j in s:
+        c=[]
+        for k,v in j.items():
+            if k=='bh':
+                continue
+            else:
+                c.append(v)
+        dict[c[0]]=c[1]
+    print (dict)
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'eBedTrack/nurse_bed_availability.html',
+                  {'s': dict})
 
+
+def bed_availability(request):
+    print('inside first responder bed_availability')
+    h = Hospital.objects.all()
+    print("Hospitals are :")
+    dict ={}
+    dict2 = {}
+    sample = {}
+    for x in h:
+        e = Bed.objects.filter(bh_id=x).count()
+    hos = Hospital.objects.get(hospital_id=str(x))
+    dict[hos.hospital_name] = [e]
+    s=Bed.objects.filter(bh=x,status='VACANT').values('bh', 'bed_type').annotate(Count('bed_type'))
+    bedtype={}
+    for j in s:
+        c=[]
+    for k,v in j.items():
+        if k=='bh':
+            continue
+        else:
+            c.append(v)
+        bedtype[c[0]]=c[1]
+        for k,v in bedtype.items():
+            s=dict.get(hos.hospital_name)
+            s.append(k)
+            s.append(v)
+            dict[hos.hospital_name] = s
+        print('printing bedtype for hospital '+str(dict))
+    h = Hospital.objects.all()
+
+    print('bedtype outside ' +str(dict))
+    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    return render(request, 'eBedTrack/bed_availability.html',
+        {'hospitals': dict,'bedtype':bedtype})
+
+
+    # print('inside hospital_list')
+    # h = Hospital.objects.all()
+    # dict = {}
+    # for x in h:
+    #     e = Bed.objects.filter(bh_id=x).count()
+    #     hos = Hospital.objects.get(hospital_id=str(x))
+    #     dict[hos.hospital_name] = e
+    #
+    # return render(request, 'eBedTrack/bed_availability.html',
+    #               {'hospitals': dict})
+
+    # return render(request, 'eBedTrack/nurse_home.html', {'eBedTrack': nurse_home, 'hosp_name': name})
 
 
 def bed_count(request):
@@ -89,6 +164,18 @@ def hospital_list(request):
                   {'hospitals': hospitals})
 
 
+# def bed_availability(request):
+#     print('inside hospital_list')
+#     h = Hospital.objects.all()
+#     print('hospital obj'+str(h))
+#     dict = {}
+#     for x in h:
+#         e = Bed.objects.filter(bh_id=x).count()
+#         hos = Hospital.objects.get(hospital_id=str(x))
+#         dict[hos.hospital_name] = e
+#         print(dict)
+#     return render(request, 'eBedTrack/bed_availability.html',
+#                   {'hospitals': dict})
 
 def bed_availability(request):
     print('inside first responder bed_availability')
@@ -154,7 +241,7 @@ def patient_list(request):
    print("inside patient list")
    print(request.user.username)
    patient = Patient.objects.filter(hospital_id=request.user.username)
-   print('printing patients '+str(patient))
+   # print('printing patients '+str(patient))
    return render(request, 'eBedTrack/patient_list.html', {'patients': patient})
 
 
@@ -349,6 +436,31 @@ def new_bed(request):
 
 
 def press_report(request):
+    h = Hospital.objects.all()
+    p = Patient.objects.all()
+    pdict = {}
+    dict = {}
+    for x in h:
+        e = Hospital.objects.get(hospital_name=x.hospital_name)
+        dict[e.hospital_name] = e
+        print("print e" , e)
+        print(x)
+        print(dict)
+        for y in p:
+            pc = Patient.objects.filter(hospital_id=x).count()
+            con = Patient.objects.get(patient_tag=str(y))
+            pdict[con.condition] = pc
+            print(y)
+
+    # print(dict)
+    # print(p)
+
+    # dict1 = {}
+    # for x in p:
+    #     e1 = Patient.objects.filter(patient_id=x)
+    #     hos1 = Patient.objects.get(patient_id=str(x))
+    #     dict[hos1.condition] = e1
+
     pdict = Patient.objects.all().values('hospital_id', 'condition').annotate(count=Count('condition'))
     hdict = Hospital.objects.all().values('hospital_id', 'hospital_name')
 
@@ -392,8 +504,26 @@ def thanks(request):
 
 
 def view_details(request):
+    # return render(request, 'eBedTrack/view_details.html',
+    #               {'view_details': view_details})
+
+    print('inside hospital_list')
+    hosp = Hospital.objects.all()
+    be = Bed.objects.all()
+    pdict = {}
+
+    for x in hosp:
+        e = Hospital.objects.filter(hospital_id=x)
+        print(e)
+        for y in be:
+            f = Bed.objects.filter(bed_type=y).count()
+            b = Bed.objects.get(bed_type=str(y))
+            print(b)
+            print(f)
+            pdict[b.bed_type] = f
+            print(pdict)
     return render(request, 'eBedTrack/view_details.html',
-                  {'view_details': view_details})
+                {'pdict': pdict})
 
 
 def privacy_statement(request):
