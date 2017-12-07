@@ -83,31 +83,15 @@ WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
-       # 'ENGINE': 'django.db.backends.postgresql',
-       #
-       #  'NAME': 'd6i4oi0ceokl1f',
-       #  'USER': 'fmloeggoftqlxk',
-       #  'PASSWORD': 'ebd6af2175af6ec9a53b794cf4890114a4ccbac66bfb4d1b26da1e5d4cea8bf9',
-       #  'HOST': 'ec2-54-235-86-244.compute-1.amazonaws.com',
-       #  'PORT': '5432',
 
-
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-=======
        'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'd3r7i1q4ghcr5',
+       'USER': 'rgrykosmubtzts',
+       'PASSWORD': 'ead0cd0ca1cc1d003e13ef06bda11c208093172fbeaeab8aa9d03a032e2d2249',
+       'HOST': 'ec2-54-225-119-223.compute-1.amazonaws.com',
+       'PORT': '5432',
 
-        'NAME': 'd3r7i1q4ghcr5',
-        'USER': 'rgrykosmubtzts',
-        'PASSWORD': 'ead0cd0ca1cc1d003e13ef06bda11c208093172fbeaeab8aa9d03a032e2d2249',
-        'HOST': 'ec2-54-225-119-223.compute-1.amazonaws.com',
-        'PORT': '5432',
 
-        #
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
->>>>>>> 2c2d1025bb73eecf3e71288a8b567203786ae3a7
     }
 }
 
