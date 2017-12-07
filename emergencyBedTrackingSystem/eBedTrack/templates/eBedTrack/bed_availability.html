@@ -5,14 +5,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Emergency Bed Tracking System</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
 </head>
+ <style>
+            #table-wrapper {
+              position:relative;
+            }
+            #table-scroll {
+              height:400px;
+              overflow:auto;
+              margin-top:20px;
+            }
+            #table-wrapper table {
+              width:100%;
+
+            }
+            #table-wrapper tab  le * {
+              color:black;
+            }
+            #table-wrapper table thead th .text {
+              position:absolute;
+              top:-20px;
+              z-index:2;
+              height:20px;
+              width:35%;
+              border:1px solid red;
+            }
+
+        </style>
 
      <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Welcome!</div>
+                <div class="panel panel-primary" style="margin-top: ">
                     <div class="panel-body">
                         Check the availability of Beds in various Hospitals here
                     </div>
@@ -24,7 +49,10 @@
     <div class="row">
         <h2 style="padding-left: 15Px">Hospital Beds Information</h2>
     </div>
-    <div>
+    <div  id="table-wrapper">
+    <div id="table-scroll">
+
+
         <table class="table table-bordered table-hover">
             <thead>
             <tr class="bg-info">
@@ -38,22 +66,19 @@
                 <tr>
                     <td>{{ k }}</td>
                     <td style="text-align: center">{{ v.0 }} </td>
-                    <td>
-                        <table class ="data" style="text-align:left">
+                    <td style="text-align: center; width: 25%">
+                        <table class ="data" style="text-align:center">
                             <!--<tr>-->
                                 <!--{% for i in "v"|rjust:"100" %}-->
                                 <!--<p>BED Type: {{ v.i }} count : {{ v.i }}</p>-->
                                 <!--{% endfor %}-->
                             <!--<tr>-->
                             <tr>
-
                                 {% for i in v|slice:"1:100" %}
-                                {{ i }}
-                                </li>
+                                    {{ i }} <br>
                                 {% endfor %}
+                            </tr>
 
-
-                        </tr>
 
                         </table>
                     </td>
@@ -62,4 +87,7 @@
             </tbody>
         </table>
     </div>
+    </div>
+
+
 {% endblock %}

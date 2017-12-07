@@ -5,13 +5,13 @@ from .models import Hospital, Bed, Patient, Nurse, ContactUs
 class HospitalForm(forms.ModelForm):
     class Meta:
         model = Hospital
-        fields = ('hospital_id','hospital_name', 'address', 'phone_no','created_date',)
+        fields = ('hospital_id','hospital_name', 'address', 'phone_no')
 
 class BedForm(forms.ModelForm):
     class Meta:
-        model = Bed
-        fields = (
-            'bed_id','bed_type',)
+        model=Bed
+        fields = ('bed_id','bed_type','created_date','bh')
+        exclude = ('bh',)
 
 class ContactForm(forms.ModelForm):
     class Meta:

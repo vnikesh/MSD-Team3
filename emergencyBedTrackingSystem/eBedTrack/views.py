@@ -26,14 +26,18 @@ def home(request):
 def nurse_home(request):
     print('inside nurse home')
     user_name = request.user.username
-    for hosp in Hospital.objects.raw('select hospital_id,hospital_name from eBedTrack_Hospital '
-                                        'where hospital_id=%s',[user_name]):
-        print('print hospital id ')
-        print(hosp.hospital_id)
-        print('The hospital name is ')
-        print(hosp.hospital_name)
-        name = hosp.hospital_name
-        return render(request, 'eBedTrack/nurse_home.html',{'eBedTrack': nurse_home,'hosp_name':name})
+    hos = Hospital.objects.get(hospital_id=str(user_name))
+    name = hos.hospital_name
+    print('hosp name is h in ' + str(name))
+    # for hosp in Hospital.objects.raw('select hospital_id,hospital_name from eBedTrack_Hospital '
+    # 'where hospital_id=%s',[user_name]):
+    # print('print hospital id ')
+    # print(hosp.hospital_id)
+    # print('The hospital name is ')
+    # print(hosp.hospital_name)
+    # name = hosp.hospital_name
+    return render(request, 'eBedTrack/nurse_home.html',
+    {'eBedTrack': nurse_home,'hosp_name':name})
 
 
 
@@ -117,7 +121,7 @@ def bed_availability(request):
         h = Hospital.objects.all()
 
     print('bedtype outside ' +str(dict))
-    hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
+    # hospitals = Hospital.objects.filter(created_date__lte=timezone.now())
     return render(request, 'eBedTrack/bed_availability.html',
                   {'hospitals': dict,'bedtype':bedtype})
 
@@ -161,12 +165,6 @@ def patient_new(request):
         form = PatientForm(request.POST)
         bid = form.data['bed_id']
         print('printing bedid from form ' + str(bid))
-
-    un = request.user.username
-    if request.method == "POST":
-        form = PatientForm(request.POST)
-        bid =form.data['bed_id']
-        print('printing bedid from form '+ str(bid))
 
         pbid = str(un) + str(bid)
         print(form.data)
@@ -215,8 +213,10 @@ def patient_edit(request, pk):
     print(patient.bed_id)
     print(request.method)
     if request.method == "POST":
+        print('yes its post method')
         form = PatientForm(request.POST, instance=patient)
         if form.is_valid():
+            print('form is valid')
             patient = form.save(commit=False)
             patient.updated_date = timezone.now()
             patient.save()
@@ -227,12 +227,14 @@ def patient_edit(request, pk):
                     for k,v in i.items():
                         Bed.objects.filter(bed_id=v).update(status='VACANT')
 
-            patient = Patient.objects.filter(created_date__lte=timezone.now())
+            # patient = Patient.objects.filter(created_date__lte=timezone.now())
+            patient = Patient.objects.filter(hospital_id=request.user.username)
+            print('patient updated '+ str(patient))
             return render(request, 'eBedTrack/patient_list.html',
                          {'patients': patient})
         else:
             form = PatientForm(instance=patient)
-            return render(request, 'eBedTrack/patient_edit.html', {'form': form})
+            return render(request, 'eBedTrack/patient_edit.html', {'form':form })
 
     else:
         form = PatientForm(instance=patient)
@@ -275,35 +277,6 @@ def personal(request):
 
 
 
-@login_required
-def patient_edit(request, pk):
-    print('inside patient_edit')
-    patient = get_object_or_404(Patient, pk=pk)
-    print('patient bed id')
-    print(patient.bed_id)
-    print(request.method)
-    if request.method == "POST":
-        form = PatientForm(request.POST, instance=patient)
-        if form.is_valid():
-            patient = form.save(commit=False)
-            patient.updated_date = timezone.now()
-            patient.save()
-            s = form.cleaned_data.get('patient_status')
-            if s == 'Discharged':
-                Pat = Patient.objects.filter(id=pk).values('bed_id')
-                for i in Pat:
-                    for k, v in i.items():
-                        Bed.objects.filter(bed_id=v).update(status='VACANT')
-
-            patient = Patient.objects.filter(created_date__lte=timezone.now())
-            return render(request, 'eBedTrack/patient_list.html', {'patients': patient})
-        else:
-            form = PatientForm(instance=patient)
-            return render(request, 'eBedTrack/patient_edit.html', {'form': form})
-
-    else:
-        form = PatientForm(instance=patient)
-        return render(request, 'eBedTrack/patient_edit.html', {'form': form})
 
 
 @login_required

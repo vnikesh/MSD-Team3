@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^patient_list/$', views.patient_list, name='patient_list'),
     url(r'^patient_list/patient_new/$', views.patient_new, name='patient_new'),
 
-    url(r'^hospital_list/$', views.hospital_list, name='hospital_list'),
+    # url(r'^hospital_list/$', views.hospital_list, name='hospital_list'),
     url(r'^nurse_list/$', views.nurse_list, name='nurse_list'),
 
     url(r'^personal/$', views.personal, name='personal'),
@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin_hospital_list/$', views.admin_hospital_list, name='admin_hospital_list'),
     url(r'^admin_hospital_list/(?P<pk>[\a-z]+)/delete/$', views.admin_hospital_delete, name='admin_hospital_delete'),
     url(r'^admin_hospital_list/(?P<pk>[\w-]+)/edit/$', views.admin_hospital_edit, name='admin_hospital_edit'),
-    url(r'^hospital_list/create/$', views.admin_hospital_new, name='admin_hospital_new'),
+    url(r'^admin_hospital_list/create/$', views.admin_hospital_new, name='admin_hospital_new'),
     url(r'^nurse_list/$', views.nurse_list, name='nurse_list'),
     url(r'^nurse_list/(?P<pk>\d+)/delete/$', views.nurse_delete, name='nurse_delete'),
     url(r'^nurse_list/(?P<pk>\d+)/edit/$', views.nurse_edit, name='nurse_edit'),
