@@ -96,7 +96,7 @@ Admin is the only user who has ability to create, update, read and
 delete a nurse and hospital. Whereas, nurse can only create, update,
 read and delete a patient and bed details.
 
-1.  **Admin **
+1.  **Admin**
     ----------
 
     1.  ### **Login**
@@ -120,7 +120,7 @@ The screen below is the logout screen for admin
 
 <img src="./media/image4.png" width="623" height="329" />
 
-1.  **Nurse **
+1.  **Nurse**
     ----------
 
     1.  ### **Login**
