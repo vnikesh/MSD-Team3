@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,10 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!snm544d8l_pm$kk2wm)!t=78*j$e(&(j+8$^mnfyv+#c=45%='
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -68,6 +73,8 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 
@@ -76,8 +83,29 @@ WSGI_APPLICATION = 'emergencyBedTrackingSystem.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+
+       'ENGINE': 'django.db.backends.postgresql',
+       
+         'NAME': 'd6i4oi0ceokl1f',
+         'USER': 'fmloeggoftqlxk',
+         'PASSWORD': 'ebd6af2175af6ec9a53b794cf4890114a4ccbac66bfb4d1b26da1e5d4cea8bf9',
+         'HOST': 'ec2-54-235-86-244.compute-1.amazonaws.com',
+         'PORT': '5432',
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
     }
 }
 
@@ -106,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -119,3 +147,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
